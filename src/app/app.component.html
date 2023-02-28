@@ -1,6 +1,13 @@
 <form #userForm="ngForm" (ngSubmit)="registerUser(userForm)">
 
-  <input type="text" name="firstName" ngModel />
+  <div class="form-group">
+    <label for="exampleInputEmail1">First Name</label>
+    <input type="text" class="form-control" name="firstName" ngModel />
+  </div>
+
+
+
+
   <input type="text" name="lastName" ngModel />
   <input type="text" name="mail" ngModel />
   <input type="text" name="mobile" ngModel/>
