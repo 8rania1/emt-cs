@@ -5,6 +5,6 @@ import { HttpClient } from '@angular/common/http';
 export class UserService {
   constructor(private http: HttpClient) { }
   creatUser(){
-      console.log("hello world")
+      console.log("hello world from mohamed");
   }
 }
