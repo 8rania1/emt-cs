@@ -1,24 +1,3 @@
-<form #userForm="ngForm" (ngSubmit)="registerUser(userForm)">
+<app-header></app-header>
 
-  <div class="form-group">
-    <label for="exampleInputEmail1">First Name</label>
-    <input type="text" class="form-control" name="firstName" ngModel />
-  </div>
-
-  
-  <div class="form-group">
-    <label for="inputEmail3" class="col-sm-2 col-form-label">Last Name</label>
-    <input type="text" class="form-control" name="lirstName" ngModel />
-  </div>
-  <div class="form-group">
-    <label for="exampleInputEmail1">Mail</label>
-    <input type="text" class="form-control" name="mail" ngModel />
-  </div>
-  <div class="form-group">
-    <label for="exampleInputEmail1">Mobile</label>
-    <input type="text" class="form-control" name="mobile" ngModel />
-  </div>
-  <button type="submit" class="btn btn-primary">Login</button>
-
-
-</form>
+<router-outlet></router-outlet>
