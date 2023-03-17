@@ -1,4 +1,12 @@
-<p>table works!</p>
+<table cdk-table [dataSource]="dataSource">
+  <ng-container cdkColumnDef="firstName">
+    <th cdk-header-cell *cdkHeaderCellDef> firstName </th>
+    <td cdk-cell *cdkCellDef="let user"> {{user.firstName}} </td>
+  </ng-container>
+
+</table>
+
+<!-- <p>table works!</p>
 <form>
 	<div class="mb-3 row">
 		<label for="table-complete-search" class="col-xs-3 col-sm-auto col-form-label">Full text search:</label>
@@ -50,4 +58,4 @@
 			<option [ngValue]="6">6 items per page</option>
 		</select>
 	</div>
-</form>
+</form> -->

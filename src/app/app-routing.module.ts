@@ -1,11 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { FormsComponent } from './forms/forms.component';
-import { UserComponent } from './user/user.component';
+import { UserComponent } from './feature/user/user/user.component';
 
 const routes: Routes = [
-  {path:"forms",component:FormsComponent},
-  {path:"user",component:UserComponent}
+  { path: "user", loadChildren: () => import('./feature/user/user.module').then(m => m.UserModule) }
 ];
 
 @NgModule({

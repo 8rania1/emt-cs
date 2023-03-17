@@ -3,12 +3,7 @@ import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  templateUrl: './app.component.html'
 })
 export class AppComponent {
-  title = 'emt-cs';
-  registerUser(user: NgForm) {
-    console.log(user.value)
-  }
 }
