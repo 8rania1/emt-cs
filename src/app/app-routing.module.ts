@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { UserComponent } from './feature/user/user/user.component';
 
 const routes: Routes = [
-  { path: "user", loadChildren: () => import('./feature/user/user.module').then(m => m.UserModule) }
+  { path: "user", loadChildren: () => import('./feature/user/user.module').then(m => m.UserModule) },
+  { path: "equipment", loadChildren: () => import('./feature/equipment/equipment.module').then(m => m.EquipmentModule) },
+  { path: "movement", loadChildren: () => import('./feature/movement/movement.module').then(m => m.MovementModule) },
+  { path: "reason", loadChildren: () => import('./feature/reason/reason.module').then(m => m.ReasonModule) }
 ];
 
 @NgModule({

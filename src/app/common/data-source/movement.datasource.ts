@@ -1,18 +1,19 @@
 import { CollectionViewer, DataSource } from '@angular/cdk/collections';
 import { BehaviorSubject, catchError, finalize, Observable, of } from 'rxjs';
-import { User } from '../emt-schema';
+import { Movement, User } from '../emt-schema';
+import { MovementService } from '../service/movement.service';
 import { UserService } from '../service/user.service';
 
-export class UserDataSource extends DataSource<User> {
-  private collection = new BehaviorSubject<User[]>([]);
+export class MovementDataSource extends DataSource<Movement> {
+  private collection = new BehaviorSubject<Movement[]>([]);
   private loadingSubject = new BehaviorSubject<boolean>(false);
   public loading$ = this.loadingSubject.asObservable();
   public count = 0;
 
-  constructor(private userService: UserService) {
+  constructor(private movementService: MovementService) {
     super();
   }
-  connect(collectionViewer: CollectionViewer): Observable<User[]> {
+  connect(collectionViewer: CollectionViewer): Observable<Movement[]> {
     return this.collection.asObservable();
   }
   disconnect(collectionViewer: CollectionViewer) {
@@ -27,8 +28,8 @@ export class UserDataSource extends DataSource<User> {
     size: number = 10
   ) {
     this.loadingSubject.next(true);
-    this.userService
-      .users(page, size, field, direction)
+    this.movementService
+      .movements(page, size, field, direction)
       .pipe(
         catchError(() => of([])),
         finalize(() => this.loadingSubject.next(false))

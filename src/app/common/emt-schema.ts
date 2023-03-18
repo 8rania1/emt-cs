@@ -1,12 +1,8 @@
-/* tslint:disable */
-/* eslint-disable */
-// Generated using typescript-generator version 3.1.1185 on 2023-03-17 16:32:45.
-
 export interface Category {
     id: number;
     name: string;
     description: string;
-    equipments: Equipment[];
+    threshold: number;
 }
 
 export interface Equipment {
@@ -16,7 +12,6 @@ export interface Equipment {
     partNumber: string;
     active: boolean;
     category: Category;
-    movements: Movement[];
 }
 
 export interface Movement {
@@ -24,6 +19,21 @@ export interface Movement {
     date: Date;
     direction: MovementDirection;
     equipment: Equipment;
+    reason: Reason;
+    note: string;
+}
+
+export interface Notification {
+    id: number;
+    title: string;
+    message: string;
+    user: User;
+}
+
+export interface Reason {
+    id: number;
+    title: string;
+    direction: MovementDirection;
 }
 
 export interface User {
@@ -37,3 +47,5 @@ export interface User {
 }
 
 export type MovementDirection = "IN" | "OUT";
+
+export type Severity = "INFO" | "WARN";

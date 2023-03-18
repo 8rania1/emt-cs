@@ -1,0 +1,18 @@
+<form #reason="ngForm" (ngSubmit)="submit(reason)">
+  <div>
+    <div>
+      <label for="title">title</label>
+      <input type="text" name="title" ngModel />
+    </div>
+    <div>
+      <label>Direction</label>
+      <div>
+        <label>IN</label>
+        <input type="radio" value="IN" name="direction" ngModel />
+        <label>OUT</label>
+        <input type="radio" value="OUT" name="direction" ngModel />
+      </div>
+    </div>
+    <button type="submit">Submit</button>
+  </div>
+</form>

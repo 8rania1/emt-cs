@@ -1,0 +1,40 @@
+<form #equipment="ngForm" (ngSubmit)="submit(equipment)">
+  <div>
+    <div>
+      <label for="serialNumber">serialNumber</label>
+      <input type="text" name="serialNumber" ngModel />
+    </div>
+    <div>
+      <label for="version">version</label>
+      <input type="text" name="version" ngModel />
+    </div>
+    <div>
+      <label for="name">name</label>
+      <input type="text" name="name" ngModel />
+    </div>
+    <div>
+      <label for="partNumber">partNumber</label>
+      <input type="text" name="partNumber" ngModel />
+    </div>
+    <div>
+      <label for="category">category</label>
+      <select type="text" name="category" ngModel>
+        <option *ngFor="let category of categories" [ngValue]="category">
+          {{ category.name }}
+        </option>
+      </select>
+      <button type="button" (click)="category.show()">add category</button>
+    </div>
+    <div>
+      <button type="submit">Submit</button>
+    </div>
+  </div>
+</form>
+<dialog #category>
+  <div>
+    <button (click)="category.close()">Close</button>
+  </div>
+  <app-category-form></app-category-form>
+
+
+</dialog>

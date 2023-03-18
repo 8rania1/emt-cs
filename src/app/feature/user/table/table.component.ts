@@ -5,10 +5,11 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-table',
-  templateUrl: './table.component.html'
+  templateUrl: './table.component.html',
 })
 export class TableComponent implements OnInit {
   dataSource: UserDataSource;
+  columns = ['firstName', 'lastName', 'mail', 'mobile'];
   constructor(private userService: UserService) {
     this.dataSource = new UserDataSource(this.userService);
   }

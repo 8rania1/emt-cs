@@ -1,0 +1,17 @@
+<form #category="ngForm" (ngSubmit)="submit(category)">
+  <div>
+    <div>
+      <label for="name">name</label>
+      <input type="text" name="name" required="true" ngModel />
+    </div>
+    <div>
+      <label for="description">description</label>
+      <textarea type="text" name="description" ngModel></textarea>
+    </div>
+    <div>
+      <label for="threshold">threshold</label>
+      <input type="number" name="threshold" required="true" ngModel  />
+    </div>
+    <button type="submit">Submit</button>
+  </div>
+</form>

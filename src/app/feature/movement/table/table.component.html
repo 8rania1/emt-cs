@@ -1,0 +1,9 @@
+<button routerLink="/movement/new">Add</button>
+<table cdk-table [dataSource]="dataSource">
+  <ng-container [cdkColumnDef]="column" *ngFor="let column of columns">
+    <th scope="row" cdk-header-cell *cdkHeaderCellDef>{{ column }}</th>
+    <td cdk-cell *cdkCellDef="let equipment">{{ equipment[column] }}</td>
+  </ng-container>
+  <tr cdk-header-row *cdkHeaderRowDef="columns"></tr>
+  <tr cdk-row *cdkRowDef="let row; columns: columns"></tr>
+</table>

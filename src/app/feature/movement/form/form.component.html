@@ -1,0 +1,53 @@
+<form #movement="ngForm" (ngSubmit)="submit(movement)">
+  <div>
+    <div>
+      <label for="date">date</label>
+      <input type="date" name="date" ngModel />
+    </div>
+    <div>
+      <label for="equipment">equipment</label>
+      <select type="text" name="equipment" ngModel>
+        <option *ngFor="let equipment of equipments" [ngValue]="equipment">
+          {{ equipment.serialNumber }}
+        </option>
+      </select>
+    </div>
+    <div>
+      <label>Direction</label>
+      <div>
+        <label>IN</label>
+        <input
+          type="radio"
+          value="IN"
+          name="direction"
+          ngModel
+          (change)="direction($event)"
+        />
+        <label>OUT</label>
+        <input
+          type="radio"
+          value="OUT"
+          name="direction"
+          ngModel
+          (change)="direction($event)"
+        />
+      </div>
+    </div>
+    <div *ngIf="reasons">
+      <label for="reason">reason</label>
+      <select type="text" name="reason" ngModel>
+        <option *ngFor="let reason of reasons" [ngValue]="reason">
+          {{ reason.title }}
+        </option>
+      </select>
+    </div>
+
+    <div>
+      <label for="note">note</label>
+      <textarea name="note" ngModel></textarea>
+    </div>
+    <div>
+      <button type="submit">Submit</button>
+    </div>
+  </div>
+</form>
