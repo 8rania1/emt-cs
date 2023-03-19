@@ -1,40 +1,50 @@
 <form #equipment="ngForm" (ngSubmit)="submit(equipment)">
   <div>
-    <div>
+    <div class="mb-1">
       <label for="serialNumber">serialNumber</label>
-      <input type="text" name="serialNumber" ngModel />
+      <input type="text" class="form-control" name="serialNumber" ngModel />
     </div>
-    <div>
+    <div class="mb-1">
       <label for="version">version</label>
-      <input type="text" name="version" ngModel />
+      <input type="text" class="form-control" name="version" ngModel />
     </div>
-    <div>
+    <div class="mb-1">
       <label for="name">name</label>
-      <input type="text" name="name" ngModel />
+      <input type="text" class="form-control" name="name" ngModel />
     </div>
-    <div>
+    <div class="mb-1">
       <label for="partNumber">partNumber</label>
-      <input type="text" name="partNumber" ngModel />
+      <input type="text" class="form-control" name="partNumber" ngModel />
     </div>
-    <div>
+    <div class="mb-1">
       <label for="category">category</label>
-      <select type="text" name="category" ngModel>
-        <option *ngFor="let category of categories" [ngValue]="category">
-          {{ category.name }}
-        </option>
-      </select>
-      <button type="button" (click)="category.show()">add category</button>
+      <div class="input-group">
+        <select class="form-select" type="text" name="category" ngModel>
+          <option *ngFor="let category of categories" [ngValue]="category">
+            {{ category.name }}
+          </option>
+        </select>
+        <div class="input-group-prepend">
+          <button type="button" class="btn btn-outline-primary" (click)="modal(content)">add category</button>
+        </div>
+      </div>
     </div>
     <div>
-      <button type="submit">Submit</button>
+      <button type="submit" class="btn btn-primary">Submit</button>
     </div>
   </div>
 </form>
-<dialog #category>
-  <div>
-    <button (click)="category.close()">Close</button>
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Add Category</h4>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    ></button>
   </div>
-  <app-category-form></app-category-form>
-
-
-</dialog>
+  <div class="modal-body">
+    <app-category-form></app-category-form>
+  </div>
+</ng-template>

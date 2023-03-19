@@ -4,7 +4,6 @@ import { NgForm } from '@angular/forms';
 import { Category, Equipment, Reason } from 'src/app/common/emt-schema';
 import { EquipmentService } from 'src/app/common/service/equipment.service';
 import { MovementService } from 'src/app/common/service/movement.service';
-import { ToastrService } from 'ngx-toastr';
 import { ReasonService } from 'src/app/common/service/reason.service';
 
 @Component({
@@ -18,7 +17,7 @@ export class FormComponent implements OnInit {
     private movementService: MovementService,
     private equipementService: EquipmentService,
     private reasonService: ReasonService,
-    private toastr: ToastrService
+    // private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -38,6 +37,8 @@ export class FormComponent implements OnInit {
     console.log(JSON.stringify(movement.value));
     this.movementService
       .save(movement.value)
-      .subscribe(() => this.toastr.info('success'));
+      .subscribe(
+        // () => this.toastr.info('success')
+        );
   }
 }

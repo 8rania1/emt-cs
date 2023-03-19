@@ -1,10 +1,7 @@
+
+
 <app-header></app-header>
-<nav>
-  <button type="button" routerLink="/user">user</button>
-  <button type="button" routerLink="/equipment">equipment</button>
-  <button type="button" routerLink="/movement">movement</button>
-  <button type="button" routerLink="/reason">Reason</button>
-</nav>
-<div>
+<div class="container mt-2">
   <router-outlet></router-outlet>
 </div>
+<app-toasts aria-live="polite" aria-atomic="true"></app-toasts>

@@ -1,13 +1,12 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { EquipmentDataSource } from 'src/app/common/data-source/equipment.datasource';
 import { EquipmentService } from 'src/app/common/service/equipment.service';
-import * as feather from 'feather-icons';
 
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
 })
-export class TableComponent implements OnInit, AfterViewInit {
+export class TableComponent implements OnInit {
   dataSource: EquipmentDataSource;
   columns = [
     'serialNumber',
@@ -23,9 +22,5 @@ export class TableComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.dataSource.load();
-  }
-  
-  ngAfterViewInit(): void {
-    feather.replace();
   }
 }

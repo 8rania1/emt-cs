@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ToastrService } from 'ngx-toastr';
 import { CategoryService } from 'src/app/common/service/category.service';
 
 @Component({
@@ -10,12 +9,12 @@ import { CategoryService } from 'src/app/common/service/category.service';
 export class FormComponent {
   constructor(
     private categoryService: CategoryService,
-    private toastr: ToastrService
+    // private toastr: ToastrService
   ) {}
 
   submit(category: NgForm) {
     this.categoryService.save(category.value).subscribe({
-      next: () => this.toastr.info('success'),
+      // next: () => this.toastr.info('success'),
     });
   }
 }

@@ -2,11 +2,11 @@
   <div>
     <div>
       <label for="date">date</label>
-      <input type="date" name="date" ngModel />
+      <input type="date" class="form-control" name="date" ngModel />
     </div>
     <div>
       <label for="equipment">equipment</label>
-      <select type="text" name="equipment" ngModel>
+      <select class="form-control" name="equipment" ngModel>
         <option *ngFor="let equipment of equipments" [ngValue]="equipment">
           {{ equipment.serialNumber }}
         </option>
@@ -35,7 +35,7 @@
     </div>
     <div *ngIf="reasons">
       <label for="reason">reason</label>
-      <select type="text" name="reason" ngModel>
+      <select class="form-control" type="text" name="reason" ngModel>
         <option *ngFor="let reason of reasons" [ngValue]="reason">
           {{ reason.title }}
         </option>
@@ -44,10 +44,10 @@
 
     <div>
       <label for="note">note</label>
-      <textarea name="note" ngModel></textarea>
+      <textarea name="note" class="form-control" ngModel></textarea>
     </div>
     <div>
-      <button type="submit">Submit</button>
+      <button type="submit" class="btn btn-primary">Submit</button>
     </div>
   </div>
 </form>

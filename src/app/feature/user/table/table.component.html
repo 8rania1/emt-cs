@@ -1,4 +1,4 @@
-<table cdk-table [dataSource]="dataSource">
+<table class="table table-striped" cdk-table [dataSource]="dataSource">
   <ng-container cdkColumnDef="firstName">
     <th scope="row" cdk-header-cell *cdkHeaderCellDef>firstName</th>
     <td cdk-cell *cdkCellDef="let user">{{ user.firstName }}</td>

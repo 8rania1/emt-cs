@@ -1,5 +1,9 @@
-<button routerLink="/movement/new">Add</button>
-<table cdk-table [dataSource]="dataSource">
+<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+  <button class="btn btn-link" routerLink="/movement/new">
+    <i class="bi bi-plus-circle"></i>
+  </button>
+</div>
+<table class="table table-striped" cdk-table [dataSource]="dataSource">
   <ng-container [cdkColumnDef]="column" *ngFor="let column of columns">
     <th scope="row" cdk-header-cell *cdkHeaderCellDef>{{ column }}</th>
     <td cdk-cell *cdkCellDef="let equipment">{{ equipment[column] }}</td>
