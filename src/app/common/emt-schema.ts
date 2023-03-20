@@ -7,10 +7,11 @@ export interface Category {
 
 export interface Equipment {
     serialNumber: string;
+    creationDate: Date;
     version: string;
     name: string;
     partNumber: string;
-    active: boolean;
+    available: boolean;
     category: Category;
 }
 
@@ -21,6 +22,7 @@ export interface Movement {
     equipment: Equipment;
     reason: Reason;
     note: string;
+    user: User;
 }
 
 export interface Notification {

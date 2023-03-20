@@ -1,20 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Category } from 'src/app/common/emt-schema';
 import { CategoryService } from 'src/app/common/service/category.service';
 
 @Component({
-  selector: 'app-category-form',
+  selector: 'app-category',
   templateUrl: './form.component.html',
 })
 export class FormComponent {
-  constructor(
-    private categoryService: CategoryService,
-    // private toastr: ToastrService
-  ) {}
+  @Output()
+  create: EventEmitter<Category> = new EventEmitter<Category>();
+  constructor(private categoryService: CategoryService) {}
 
-  submit(category: NgForm) {
-    this.categoryService.save(category.value).subscribe({
-      // next: () => this.toastr.info('success'),
+  submit(form: NgForm) {
+    this.categoryService.save(form.value).subscribe({
+      next: (data: Category) => {
+        this.create.emit(data), form.reset();
+      },
     });
   }
 }

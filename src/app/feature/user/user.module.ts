@@ -3,12 +3,11 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { FormsComponent } from './forms/forms.component';
 import { TableComponent } from './table/table.component';
-import { CdkTableModule } from '@angular/cdk/table';
-
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [FormsComponent, TableComponent],
-  imports: [UserRoutingModule, FormsModule, CdkTableModule],
+  imports: [UserRoutingModule, CommonModule, FormsModule],
   providers: [],
 })
-export class UserModule { }
+export class UserModule {}

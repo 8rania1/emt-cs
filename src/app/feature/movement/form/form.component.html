@@ -1,16 +1,22 @@
+<ng-template #rt let-r="result" let-t="term">
+  <ngb-highlight [result]="r.serialNumber" [term]="t"></ngb-highlight>
+</ng-template>
+
 <form #movement="ngForm" (ngSubmit)="submit(movement)">
   <div>
     <div>
-      <label for="date">date</label>
-      <input type="date" class="form-control" name="date" ngModel />
-    </div>
-    <div>
       <label for="equipment">equipment</label>
-      <select class="form-control" name="equipment" ngModel>
-        <option *ngFor="let equipment of equipments" [ngValue]="equipment">
-          {{ equipment.serialNumber }}
-        </option>
-      </select>
+      <input
+        type="text"
+        class="form-control"
+        name="equipment"
+        ngModel
+        [ngbTypeahead]="search"
+        [resultTemplate]="rt"
+        [inputFormatter]="formatter"
+        [editable]="false"
+        placeholder="Serial  Number"
+      />
     </div>
     <div>
       <label>Direction</label>

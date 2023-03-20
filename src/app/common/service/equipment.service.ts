@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Equipment, User } from '../emt-schema';
@@ -27,5 +27,13 @@ export class EquipmentService {
       .set('size', size)
       .set('sort', `${field},${direction}`);
     return this.httpClient.get<Page<Equipment>>(this.url);
+  }
+
+  search(serialNumber: string = 'asc'): Observable<Equipment[]> {
+    console.log(serialNumber);
+    const params = new HttpParams().set('serialNumber', serialNumber);
+    return this.httpClient
+      .get<Equipment[]>(this.url, { params: params })
+      .pipe(map((data: any) => data.content));
   }
 }

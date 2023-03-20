@@ -1,5 +1,6 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { EquipmentDataSource } from 'src/app/common/data-source/equipment.datasource';
+import { Component, OnInit } from '@angular/core';
+import { Equipment } from 'src/app/common/emt-schema';
+import { Page } from 'src/app/common/model/page';
 import { EquipmentService } from 'src/app/common/service/equipment.service';
 
 @Component({
@@ -7,20 +8,18 @@ import { EquipmentService } from 'src/app/common/service/equipment.service';
   templateUrl: './table.component.html',
 })
 export class TableComponent implements OnInit {
-  dataSource: EquipmentDataSource;
-  columns = [
-    'serialNumber',
-    'version',
-    'name',
-    'partNumber',
-    'active',
-    'category',
-  ];
-  constructor(private equipmentService: EquipmentService) {
-    this.dataSource = new EquipmentDataSource(this.equipmentService);
-  }
+  equipments: Equipment[] = [];
+  equipment: Equipment | undefined;
+
+  constructor(private equipmentService: EquipmentService) {}
 
   ngOnInit(): void {
-    this.dataSource.load();
+    this.equipmentService
+      .equipments()
+      .subscribe((data: Page<Equipment>) => (this.equipments = data.content));
+  }
+
+  more(equipement: Equipment) {
+    this.equipment = equipement;
   }
 }

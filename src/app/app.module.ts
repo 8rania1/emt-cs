@@ -9,9 +9,16 @@ import { RxStompService } from './common/stomp/rx-stomp.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HeaderComponent } from './shared/component/header/header.component';
 import { ToastComponent } from './shared/component/toast/toast.component';
+import { NotificationsComponent } from './feature/notification/notifications/notifications.component';
+import { BooleanPipe } from './shared/directives/boolean-pipe';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent,ToastComponent],
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    ToastComponent,
+    NotificationsComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

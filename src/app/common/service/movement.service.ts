@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Movement, User } from '../emt-schema';
 import { environment } from 'src/environments/environment.development';
+import { Page } from '../model/page';
 
 @Injectable({
   providedIn: 'root',
@@ -16,15 +17,15 @@ export class MovementService {
   }
 
   movements(
-    page: number,
-    size: number,
-    field: string,
-    direction: string
-  ): Observable<Movement[]> {
+    page: number = 0,
+    size: number = 10,
+    field: string = '',
+    direction: string = 'asc'
+  ): Observable<Page<Movement>> {
     const param = new HttpParams()
       .set('page', page)
       .set('size', size)
       .set('sort', `${field},${direction}`);
-    return this.httpClient.get<Movement[]>(this.url);
+    return this.httpClient.get<Page<Movement>>(this.url);
   }
 }

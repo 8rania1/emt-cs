@@ -14,8 +14,11 @@ export class ReasonService {
   save(movement: Reason): Observable<Reason> {
     return this.httpClient.post<Reason>(this.url, movement);
   }
-  reasons(direction: string): Observable<Reason[]> {
-    const params = new HttpParams().set('direction', direction);
+  reasons(direction: string | undefined = undefined): Observable<Reason[]> {
+    let params = new HttpParams();
+    if (direction) {
+      params.set('direction', direction);
+    }
     return this.httpClient.get<Reason[]>(this.url, { params: params });
   }
 }

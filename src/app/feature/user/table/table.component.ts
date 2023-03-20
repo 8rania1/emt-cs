@@ -1,19 +1,18 @@
 import { UserService } from './../../../common/service/user.service';
-import { UserDataSource } from './../../../common/data-source/user.datasource';
 import { User } from './../../../common/emt-schema';
 import { Component, OnInit } from '@angular/core';
+import { Page } from 'src/app/common/model/page';
 
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
 })
 export class TableComponent implements OnInit {
-  dataSource: UserDataSource;
-  columns = ['firstName', 'lastName', 'mail', 'mobile'];
-  constructor(private userService: UserService) {
-    this.dataSource = new UserDataSource(this.userService);
-  }
+  users: User[] = [];
+  constructor(private userService: UserService) {}
   ngOnInit(): void {
-    this.dataSource.load();
+    this.userService
+      .users()
+      .subscribe((data: Page<User>) => (this.users = data.content));
   }
 }

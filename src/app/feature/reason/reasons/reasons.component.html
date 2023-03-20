@@ -1,0 +1,16 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Reason</th>
+      <th scope="col">Direction</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let reason of reasons; index as i">
+      <td>
+        {{ reason.title }}
+      </td>
+      <td>{{ reason.direction }}</td>
+    </tr>
+  </tbody>
+</table>

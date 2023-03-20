@@ -6,10 +6,10 @@ import { ReasonService } from 'src/app/common/service/reason.service';
 import { ToastService } from 'src/app/common/service/toastr.service';
 
 @Component({
-  selector: 'app-reason',
-  templateUrl: './form.component.html',
+  selector: 'app-reason-dashboard',
+  templateUrl: './dashboard.component.html',
 })
-export class FormComponent implements OnInit {
+export class DashboardComponent implements OnInit {
   reasons:Reason[] = []; 
   constructor(
     private reasonService: ReasonService,

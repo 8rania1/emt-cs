@@ -6,24 +6,18 @@ import { ReasonService } from 'src/app/common/service/reason.service';
 import { ToastService } from 'src/app/common/service/toastr.service';
 
 @Component({
-  selector: 'app-reason',
-  templateUrl: './form.component.html',
+  selector: 'app-reasons',
+  templateUrl: './reasons.component.html',
 })
-export class FormComponent implements OnInit {
-  reasons:Reason[] = []; 
+export class ReasonsComponent implements OnInit {
+  reasons: Reason[] = [];
   constructor(
     private reasonService: ReasonService,
     private toastr: ToastService
   ) {}
   ngOnInit(): void {
     this.reasonService.reasons().subscribe({
-      next:data=> this.reasons = data
-    })
-  }
-
-  submit(reason: NgForm) {
-    this.reasonService.save(reason.value).subscribe({
-      next: () => this.toastr.show('success','reason added'),
+      next: (data) => (this.reasons = data),
     });
   }
 }

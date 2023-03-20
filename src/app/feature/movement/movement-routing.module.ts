@@ -6,6 +6,8 @@ import { TableComponent } from './table/table.component';
 const routes: Routes = [
   { path: '', component: TableComponent },
   { path: 'new', component: FormComponent },
+  { path: 'new/:serialNumber', component: FormComponent },
+
 
 ];
 

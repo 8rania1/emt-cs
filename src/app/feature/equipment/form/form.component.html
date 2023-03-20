@@ -18,23 +18,18 @@
     </div>
     <div class="mb-1">
       <label for="category">category</label>
-      <div class="input-group">
-        <select class="form-select" type="text" name="category" ngModel>
-          <option *ngFor="let category of categories" [ngValue]="category">
-            {{ category.name }}
-          </option>
-        </select>
-        <div class="input-group-prepend">
-          <button type="button" class="btn btn-outline-primary" (click)="modal(content)">add category</button>
-        </div>
-      </div>
+      <select class="form-select" type="text" name="category" ngModel>
+        <option *ngFor="let category of categories" [ngValue]="category">
+          {{ category.name }}
+        </option>
+      </select>
     </div>
     <div>
       <button type="submit" class="btn btn-primary">Submit</button>
     </div>
   </div>
 </form>
-<ng-template #content let-modal>
+<!-- <ng-template #content let-modal>
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">Add Category</h4>
     <button
@@ -47,4 +42,4 @@
   <div class="modal-body">
     <app-category-form></app-category-form>
   </div>
-</ng-template>
+</ng-template> -->

@@ -1,0 +1,43 @@
+<div class="list-group mb-2">
+  <div
+    class="list-group-item d-flex justify-content-between align-items-center"
+  >
+    <strong class="mb-1">Name</strong>
+    <label>{{ equipement?.name }}</label>
+  </div>
+  <div
+    class="list-group-item d-flex justify-content-between align-items-center"
+  >
+    <strong class="mb-1">serialNumber</strong>
+    <label>{{ equipement?.serialNumber }}</label>
+  </div>
+  <div
+    class="list-group-item d-flex justify-content-between align-items-center"
+  >
+    <strong class="mb-1">partNumber</strong>
+    <label>{{ equipement?.partNumber }}</label>
+  </div>
+  <div
+    class="list-group-item d-flex justify-content-between align-items-center"
+  >
+    <strong class="mb-1">version</strong>
+    <label>{{ equipement?.version }}</label>
+  </div>
+</div>
+<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+  <button class="btn btn-link" routerLink="/movement/new/{{equipement?.serialNumber}}">
+    <i class="bi bi-plus-circle"></i>
+  </button>
+</div>
+<div class="list-group">
+  <div
+    *ngFor="let movement of movements"
+    class="list-group-item d-flex justify-content-between align-items-center"
+  >
+    <div>
+      <strong class="d-block">{{ movement.date | date }}</strong>
+      <label>{{ movement.reason.title }}</label>
+    </div>
+    <span [outerHTML]="movement.direction | direction"></span>
+  </div>
+</div>
