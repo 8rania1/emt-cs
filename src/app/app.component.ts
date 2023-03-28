@@ -7,16 +7,6 @@ import { Notification } from './common/emt-schema';
   selector: 'app-root',
   templateUrl: './app.component.html',
 })
-export class AppComponent implements OnInit {
-  constructor(private rxStompService: RxStompService) {}
-  ngOnInit(): void {
-    this.rxStompService
-      .watch('/topic/progress')
-      .subscribe((message: Message) => {
-        const notification: Notification = JSON.parse(
-          message.body
-        ) as Notification;
-        // this.toastr.info(notification.message,notification.title);
-      });
-  }
+export class AppComponent  {
+  constructor() {}
 }

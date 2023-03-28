@@ -43,12 +43,22 @@
       <button class="btn" routerLink="/settings" type="button">
         <i class="bi bi-sliders"></i>
       </button>
-      <button class="btn" routerLink="/settings" type="button">
+      <button
+        [ngbPopover]="popContent"
+        class="btn position-relative"
+        type="button"
+      >
         <i class="bi bi-bell"></i>
+        <span *ngIf="count !== 0"
+          class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+        >
+          {{ count }}
+          <span class="visually-hidden">unread messages</span>
+        </span>
       </button>
     </div>
   </div>
 </nav>
-<!-- <div class="float-end">
-  <app-notifications></app-notifications>
-</div> -->
+<ng-template #popContent>
+  <app-notifications [notifications]="notifications" (readen)="readen($event)"></app-notifications>
+</ng-template>

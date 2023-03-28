@@ -28,7 +28,7 @@ export class FormComponent implements OnInit {
   }
   submit(equipment: NgForm) {
     this.equipmentService.save(equipment.value).subscribe({
-      next: (data) => this.toastr.show('database', 'equipement added'),
+      next: (data) =>  {equipment.reset(); this.toastr.show('database', 'equipement added')},
     });
   }
 }

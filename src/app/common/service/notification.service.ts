@@ -1,7 +1,7 @@
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { Movement, Reason, User } from '../emt-schema';
+import { HttpClient } from '@angular/common/http';
+import { Notification } from '../emt-schema';
 import { environment } from 'src/environments/environment.development';
 
 @Injectable({
@@ -14,4 +14,9 @@ export class NotificationService {
   notifications(): Observable<Notification[]> {
     return this.httpClient.get<Notification[]>(this.url);
   }
+
+  read(notification:Notification): Observable<void> {
+    return this.httpClient.put<void>(`${this.url}`,notification);
+  }
+
 }
