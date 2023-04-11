@@ -7,8 +7,5 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'emt-cs';
-  registerUser(user: NgForm) {
-    console.log(user.value)
-  }
+
 }

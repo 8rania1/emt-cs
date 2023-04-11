@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { UserComponent } from './user/user.component';
 import { FormsComponent } from './forms/forms.component';
+import { ToolsComponent } from './tools/tools.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { FormsComponent } from './forms/forms.component';
     AppComponent,
     HeaderComponent,
     UserComponent,
-    FormsComponent
+    FormsComponent,
+    ToolsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,20 @@
+<p>voici la liste des materiaux</p>
+
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th scope="col">#</th>
+			<th scope="col">reference</th>
+			<th scope="col">name of tools</th>
+			<th scope="col">quantity</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let tools of Tools; index as i">
+			<th scope="row">{{ i + 1 }}</th>
+			<td>{{ tools.ref_tool  }}</td>
+            <td>{{ tools.name_tool }}</td>
+			<td>{{ tools.qte_stock }}</td>
+		</tr>
+	</tbody>
+</table>
