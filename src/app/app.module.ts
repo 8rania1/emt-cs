@@ -11,11 +11,12 @@ import { HeaderComponent } from './shared/component/header/header.component';
 import { ToastComponent } from './shared/component/toast/toast.component';
 import { NotificationsComponent } from './feature/notification/notifications/notifications.component';
 import { BooleanPipe } from './shared/directives/boolean-pipe';
+import { SideNaveComponent } from './shared/component/side-nav/side-nav.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
+    HeaderComponent,SideNaveComponent,
     ToastComponent,
     NotificationsComponent
   ],
