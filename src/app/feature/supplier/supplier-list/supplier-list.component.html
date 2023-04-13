@@ -1,0 +1,31 @@
+<div class="d-flex flex-row gap-2">
+  <div class="flex-fill">
+    <div class="d-grid gap-2 d-flex justify-content-end">
+      <button class="btn btn-link" routerLink="/supplier/create">
+        <i class="bi bi-plus-circle"></i>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">name</th>
+        <th scope="col">email</th>
+        <th scope="col">address</th>
+        <th scope="col">mobile</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let supplier of suppliers; index as i">
+        <td>{{ supplier.name }}</td>
+        <td>{{ supplier.email }}</td>
+        <td>{{ supplier.address }}</td>
+        <td>{{ supplier.mobile }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>

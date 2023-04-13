@@ -24,6 +24,14 @@
         </option>
       </select>
     </div>
+    <div class="mb-1">
+      <label for="category">supplier</label>
+      <select class="form-select" type="text" name="supplier" ngModel>
+        <option *ngFor="let supplier of suppliers" [ngValue]="supplier">
+          {{ supplier.name }}
+        </option>
+      </select>
+    </div>
     <div>
       <button type="submit" class="btn btn-primary">Submit</button>
     </div>

@@ -4,10 +4,6 @@
       <button class="btn btn-link" routerLink="/equipment/new">
         <i class="bi bi-plus-circle"></i>
       </button>
-      <div class="btn-group">
-        <a type="button" class="btn btn-primary" aria-current="page">Active</a>
-        <a type="button" class="btn btn-primary">Hors Service</a>
-      </div>
     </div>
   </div>
 </div>
@@ -23,6 +19,7 @@
         <th scope="col">name</th>
         <th scope="col">partNumber</th>
         <th scope="col">category</th>
+        <th scope="col">supplier</th>
         <th scope="col"></th>
       </tr>
     </thead>
@@ -36,6 +33,7 @@
         <td>{{ equipment.name }}</td>
         <td>{{ equipment.partNumber }}</td>
         <td>{{ equipment.category.name }}</td>
+        <td>{{ equipment.supplier.name }}</td>
         <td>
           <span [outerHTML]="equipment.available | boolean"></span>
         </td>

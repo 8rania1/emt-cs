@@ -13,6 +13,7 @@ export interface Equipment {
   partNumber: string;
   available: boolean;
   category: Category;
+  supplier: Supplier;
 }
 
 export interface Movement {
@@ -49,6 +50,21 @@ export interface User {
   password: string;
   role: string;
 }
+
+
+export interface Supplier {
+  id: number;
+  name: string;
+  email: string;
+  address: string;
+  mobile: string;
+
+}
+
+
+
+
+
 
 export type MovementDirection = 'IN' | 'OUT';
 

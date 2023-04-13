@@ -8,7 +8,8 @@ const routes: Routes = [
   { path: "equipment", loadChildren: () => import('./feature/equipment/equipment.module').then(m => m.EquipmentModule) },
   { path: "movement", loadChildren: () => import('./feature/movement/movement.module').then(m => m.MovementModule) },
   { path: "reason", loadChildren: () => import('./feature/reason/reason.module').then(m => m.ReasonModule) },
-  { path: "settings", loadChildren: () => import('./feature/settings/settings.module').then(m => m.SettingsModule) }
+  { path: "settings", loadChildren: () => import('./feature/settings/settings.module').then(m => m.SettingsModule) },
+  { path: "supplier", loadChildren: () => import('./feature/supplier/supplier.module').then(m => m.SupplierModule) },
 
 ];
 

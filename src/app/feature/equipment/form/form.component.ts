@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Category } from 'src/app/common/emt-schema';
+import { Category, Supplier } from 'src/app/common/emt-schema';
 import { CategoryService } from 'src/app/common/service/category.service';
 import { EquipmentService } from 'src/app/common/service/equipment.service';
+import { SupplierService } from 'src/app/common/service/supplier.service';
 import { ToastService } from 'src/app/common/service/toastr.service';
 
 @Component({
@@ -12,15 +13,20 @@ import { ToastService } from 'src/app/common/service/toastr.service';
 })
 export class FormComponent implements OnInit {
   categories: Category[] = [];
+  suppliers: Supplier[] = [];
   constructor(
     private equipmentService: EquipmentService,
     private categoryService: CategoryService,
+    private supplierService: SupplierService,
     private modalService: NgbModal,
     private toastr: ToastService
-  ) {}
+  ) { }
   ngOnInit(): void {
     this.categoryService.categories().subscribe({
       next: (data) => (this.categories = data),
+    });
+    this.supplierService.suppliers().subscribe({
+      next: (data: Supplier[]) => (this.suppliers = data),
     });
   }
   modal(content: any) {
@@ -28,7 +34,7 @@ export class FormComponent implements OnInit {
   }
   submit(equipment: NgForm) {
     this.equipmentService.save(equipment.value).subscribe({
-      next: (data) =>  {equipment.reset(); this.toastr.show('database', 'equipement added')},
+      next: (data) => { equipment.reset(); this.toastr.show('database', 'equipement added') },
     });
   }
 }

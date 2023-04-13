@@ -4,42 +4,31 @@
 
 <form #movement="ngForm" (ngSubmit)="submit(movement)">
   <div>
-    <div>
+    <div class="mb-1">
       <label for="equipment">equipment</label>
-      <input
-        type="text"
-        class="form-control"
-        name="equipment"
-        ngModel
-        [ngbTypeahead]="search"
-        [resultTemplate]="rt"
-        [inputFormatter]="formatter"
-        [editable]="false"
-        placeholder="Serial  Number"
-      />
+      <input type="text" class="form-control" name="equipment" ngModel [ngbTypeahead]="search" [resultTemplate]="rt"
+        [inputFormatter]="formatter" [editable]="false" placeholder="Serial  Number" />
     </div>
-    <div>
+    <div class="mb-1">
       <label>Direction</label>
       <div>
-        <label>IN</label>
-        <input
-          type="radio"
-          value="IN"
-          name="direction"
-          ngModel
-          (change)="direction($event)"
-        />
-        <label>OUT</label>
-        <input
-          type="radio"
-          value="OUT"
-          name="direction"
-          ngModel
-          (change)="direction($event)"
-        />
+        <label class="form-check form-check-inline">
+          <input type="radio" class="form-check-input" value="IN" name="direction" ngModel
+            (change)="direction($event)" />
+          <span class="form-check-label">
+            IN
+          </span>
+        </label>
+        <label class="form-check form-check-inline">
+          <span class="form-check-label">
+            OUT
+          </span>
+          <input type="radio" class="form-check-input" value="OUT" name="direction" ngModel
+            (change)="direction($event)" />
+        </label>
       </div>
     </div>
-    <div *ngIf="reasons">
+    <div *ngIf="reasons" class="mb-1">
       <label for="reason">reason</label>
       <select class="form-control" type="text" name="reason" ngModel>
         <option *ngFor="let reason of reasons" [ngValue]="reason">
@@ -48,7 +37,7 @@
       </select>
     </div>
 
-    <div>
+    <div class="mb-1">
       <label for="note">note</label>
       <textarea name="note" class="form-control" ngModel></textarea>
     </div>

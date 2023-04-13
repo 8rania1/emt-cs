@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment.development';
 })
 export class ReasonService {
   private url: string = `${environment.url}/reason`;
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) { }
 
   save(movement: Reason): Observable<Reason> {
     return this.httpClient.post<Reason>(this.url, movement);
@@ -17,7 +17,7 @@ export class ReasonService {
   reasons(direction: string | undefined = undefined): Observable<Reason[]> {
     let params = new HttpParams();
     if (direction) {
-      params.set('direction', direction);
+      params = params.set('direction', direction);
     }
     return this.httpClient.get<Reason[]>(this.url, { params: params });
   }
