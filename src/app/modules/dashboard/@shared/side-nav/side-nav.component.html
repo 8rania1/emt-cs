@@ -1,0 +1,38 @@
+<nav id="sidebar" class="sidebar js-sidebar" [ngClass]="collapsed === true ? 'collapsed':''">
+  <div class="sidebar-content js-simplebar">
+    <a class="sidebar-brand" routerLink="/dashboard">
+      <img class="align-middle" src="https://support.sagemcom.com/sites/default/files/sagemcom-logo_0.png"
+        height="30" />
+    </a>
+    <ul class="sidebar-nav">
+      <li class="sidebar-header">
+        Pages
+      </li>
+      <li class="sidebar-item" routerLinkActive="active">
+        <a class="sidebar-link" routerLink="user">
+          <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Users</span>
+        </a>
+      </li>
+      <li class="sidebar-item" routerLinkActive="active">
+        <a class="sidebar-link" routerLink="equipment">
+          <i class="align-middle" data-feather="user"></i> <span class="align-middle">Equipements</span>
+        </a>
+      </li>
+      <li class="sidebar-item" routerLinkActive="active">
+        <a class="sidebar-link" routerLink="movement">
+          <i class="align-middle" data-feather="log-in"></i> <span class="align-middle">Movement</span>
+        </a>
+      </li>
+      <li class="sidebar-item" routerLinkActive="active">
+        <a class="sidebar-link" routerLink="supplier">
+          <i class="align-middle bi-list-columns-reverse"></i> <span class="align-middle">Supplier</span>
+        </a>
+      </li>
+      <li class="sidebar-item" routerLinkActive="active">
+        <a class="sidebar-link" routerLink="settings">
+          <i class="align-middle bi-list-columns-reverse"></i> <span class="align-middle">Settings</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>

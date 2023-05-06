@@ -1,0 +1,34 @@
+<div class="d-flex flex-row gap-2">
+  <div class="flex-fill">
+    <div class="d-grid gap-2 d-flex justify-content-end">
+      <button class="btn btn-link" (click)="category()">
+        <i class="bi bi-plus-circle bi--xl"></i>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">{{'category.label' | translate}}</th>
+        <th scope="col">{{'category.threshold' | translate}}</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let category of categories; index as i">
+        <td>
+          {{ category.name }}
+        </td>
+        <td>{{ category.threshold }}</td>
+        <td>
+          <button type="button" class="btn btn-link" triggers="click" [autoClose]="true"
+            ngbTooltip="{{ category.description }}">
+            <i class="bi bi-info-circle"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

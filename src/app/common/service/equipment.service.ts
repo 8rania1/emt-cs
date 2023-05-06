@@ -30,7 +30,6 @@ export class EquipmentService {
   }
 
   search(serialNumber: string = 'asc'): Observable<Equipment[]> {
-    console.log(serialNumber);
     const params = new HttpParams().set('serialNumber', serialNumber);
     return this.httpClient
       .get<Equipment[]>(this.url, { params: params })

@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400&display=swap');
 // Variables
 @import "1-variables/app";
 
@@ -25,6 +26,7 @@
 @import "bootstrap/scss/badge";
 @import "bootstrap/scss/list-group";
 @import "bootstrap/scss/close";
+@import "bootstrap/scss/modal";
 @import "bootstrap/scss/helpers";
 @import "bootstrap/scss/utilities/api";
 
@@ -59,8 +61,12 @@
 //@import "~jsvectormap/dist/css/jsvectormap";
 //@import "~simplebar/dist/simplebar";
 //@import "~flatpickr/dist/flatpickr";
-@import "bootstrap-icons/font/bootstrap-icons.css";
+@import "bootstrap-icons-font/dist/bootstrap-icons-font.css";
 
 // 3rd party plugin styles
 @import "5-vendor/flatpickr";
 @import "5-vendor/simplebar";
+
+.avatar .avatar-content {
+    font-family: 'Source Sans Pro' !important;
+}

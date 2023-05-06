@@ -9,16 +9,17 @@ import { Page } from '../model/page';
   providedIn: 'root'
 })
 export class UserService {
-  private resource: string = 'user';
+  private resource: string = `${environment.url}/user`;
   constructor(private httpClient: HttpClient) { }
 
-  save() {
+  save(user: User): Observable<User> {
+    return this.httpClient.post<User>(this.resource, user);
   }
 
-  users(page: number = 0, size: number = 10, field: string = '', direction: string = 'asc'): Observable<Page<User>> {
+  users(page: number = 0, size: number = 10, field: string = '', direction: string = 'asc'): Observable<User[]> {
     const param = new HttpParams().set('page', page).set('size', size).
       set('sort', `${field},${direction}`)
-    return this.httpClient.get<Page<User>>(`${environment.url}/${this.resource}`);
+    return this.httpClient.get<User[]>(this.resource);
   }
 
 

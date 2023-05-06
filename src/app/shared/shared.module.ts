@@ -1,10 +1,10 @@
-import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { HeaderComponent } from './component/header/header.component';
+import { DirectionPipe } from './directives/movement-pipe';
+import { BooleanPipe } from './directives/boolean-pipe';
 
 @NgModule({
-  declarations: [HeaderComponent],
+  declarations: [DirectionPipe,BooleanPipe],
   imports: [],
-  exports:[HeaderComponent]
+  exports: [DirectionPipe,BooleanPipe]
 })
 export class SharedModule { }

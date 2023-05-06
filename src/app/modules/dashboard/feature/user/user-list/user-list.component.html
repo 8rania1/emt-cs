@@ -1,0 +1,31 @@
+<div class="d-flex flex-row gap-2">
+  <div class="flex-fill">
+    <div class="d-grid gap-2 d-flex justify-content-end">
+      <button class="btn btn-link" routerLink="/dashboard/user/user">
+        <i class="bi bi-plus-circle bi--xl"></i>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">firstName</th>
+        <th scope="col">lastName</th>
+        <th scope="col">mail</th>
+        <th scope="col">mobile</th>
+        <th scope="col">permissions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users; index as i">
+        <td>{{ user.firstName }}</td>
+        <td>{{ user.lastName }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.mobile }}</td>
+        <td>{{ user.permissions }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

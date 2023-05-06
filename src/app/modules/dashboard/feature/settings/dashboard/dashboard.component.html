@@ -1,0 +1,17 @@
+<div class="d-flex">
+  <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-pills" orientation="vertical">
+    <li ngbNavItem="top">
+      <a ngbNavLink>Reasons</a>
+      <ng-template ngbNavContent>
+        <app-reason-list></app-reason-list>
+      </ng-template>
+    </li>
+    <li ngbNavItem="middle">
+      <a ngbNavLink>Categories</a>
+      <ng-template ngbNavContent>
+        <app-categories-list></app-categories-list>
+      </ng-template>
+    </li>
+  </ul>
+  <div [ngbNavOutlet]="nav" class="flex-fill"></div>
+</div>

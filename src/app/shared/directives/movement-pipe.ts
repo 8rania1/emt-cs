@@ -6,11 +6,9 @@ export class DirectionPipe implements PipeTransform {
   constructor(private sanitizer: DomSanitizer) {}
   transform(direction: MovementDirection, ...args: any[]) {
     const name: string =
-      direction === 'IN'
-        ? 'bi-arrow-left-circle-fill'
-        : 'bi-arrow-right-circle-fill';
+      direction === 'IN' ? 'bi-arrow-left-circle' : 'bi-arrow-right-circle';
     const color: string = direction === 'IN' ? 'text-success' : 'text-danger';
-    const icon: string = `<i class='bi ${name} ${color}'></i>`;
+    const icon: string = `<i class='bi ${name} ${color} bi--xl'></i>`;
     return this.sanitizer.sanitize(
       SecurityContext.HTML,
       this.sanitizer.bypassSecurityTrustHtml(icon)
