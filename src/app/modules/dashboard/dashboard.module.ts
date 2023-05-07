@@ -11,7 +11,7 @@ import { HomeComponent } from './feature/home/home/home.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
-  declarations: [DashboardComponent, HeaderComponent, SideNaveComponent,HomeComponent],
-  imports: [DashboardRoutingModule, CommonModule,SharedModule, AvatarModule, NgbDropdownModule,BreadcrumbModule]
+  declarations: [DashboardComponent, HeaderComponent, SideNaveComponent, HomeComponent],
+  imports: [DashboardRoutingModule, CommonModule, SharedModule, AvatarModule, NgbDropdownModule, BreadcrumbModule]
 })
 export class DashboardModule { }

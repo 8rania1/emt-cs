@@ -1,9 +1,8 @@
 import { RxStompConfig } from '@stomp/rx-stomp';
-import { environment } from 'src/environments/environment';
 
 export const myRxStompConfig: RxStompConfig = {
   // Which server?
-  brokerURL: `${environment.url}/stomp`,
+  brokerURL: 'ws://localhost:8080/stomp',
 
   // Headers
   // Typical keys: login, passcode, host
