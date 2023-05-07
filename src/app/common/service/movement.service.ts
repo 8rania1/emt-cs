@@ -20,9 +20,15 @@ export class MovementService {
     return this.httpClient.get<string[]>(`${this.resource}/direction`);
   }
 
-  movements(page: number = 0, size: number = 10, field: string = '', direction: string = 'asc'): Observable<Page<Movement>> {
+  movementss(page: number = 0, size: number = 10, field: string = '', direction: string = 'asc'): Observable<Page<Movement>> {
     const param = new HttpParams().set('page', page)
       .set('size', size).set('sort', `${field},${direction}`);
     return this.httpClient.get<Page<Movement>>(this.resource);
+  }
+
+  movements(serialNumber: string | null = null): Observable<Movement[]> {
+    let params = new HttpParams();
+    if (serialNumber) { params = params.set('serialNumber', serialNumber) }
+    return this.httpClient.get<Movement[]>(this.resource, { params: params });
   }
 }

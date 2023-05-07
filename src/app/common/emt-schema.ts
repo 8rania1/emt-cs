@@ -1,3 +1,7 @@
+/* tslint:disable */
+/* eslint-disable */
+// Generated using typescript-generator version 3.1.1185 on 2023-05-06 23:33:16.
+
 export interface Category {
     id: number;
     name: string;
@@ -61,6 +65,12 @@ export interface User {
     mobile: string;
     password: string;
     permissions: string[];
+    counts: MovementDirectionCount[];
+}
+
+export interface MovementDirectionCount {
+    direction: MovementDirection;
+    count: number;
 }
 
 export type MovementDirection = "IN" | "OUT";

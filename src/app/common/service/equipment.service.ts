@@ -9,30 +9,27 @@ import { Page } from '../model/page';
   providedIn: 'root',
 })
 export class EquipmentService {
-  private url: string = `${environment.url}/equipment`;
-  constructor(private httpClient: HttpClient) {}
+  private resource: string = `${environment.url}/equipment`;
+  constructor(private httpClient: HttpClient) { }
 
   save(equipment: Equipment): Observable<Equipment> {
-    return this.httpClient.post<Equipment>(this.url, equipment);
+    return this.httpClient.post<Equipment>(this.resource, equipment);
   }
 
-  equipments(
-    page: number = 0,
-    size: number = 10,
-    field: string = '',
-    direction: string = 'asc'
-  ): Observable<Page<Equipment>> {
-    const param = new HttpParams()
-      .set('page', page)
-      .set('size', size)
-      .set('sort', `${field},${direction}`);
-    return this.httpClient.get<Page<Equipment>>(this.url);
+  equipments(page: number = 0, size: number = 10, field: string = '', direction: string = 'asc'): Observable<Page<Equipment>> {
+    const param = new HttpParams().set('page', page).set('size', size).set('sort', `${field},${direction}`);
+    return this.httpClient.get<Page<Equipment>>(this.resource);
   }
 
   search(serialNumber: string = 'asc'): Observable<Equipment[]> {
     const params = new HttpParams().set('serialNumber', serialNumber);
     return this.httpClient
-      .get<Equipment[]>(this.url, { params: params })
+      .get<Equipment[]>(this.resource, { params: params })
       .pipe(map((data: any) => data.content));
+  }
+
+  equipment(serialNumber: string): Observable<Equipment> {
+    return this.httpClient
+      .get<Equipment>(`${this.resource}/${serialNumber}`);
   }
 }

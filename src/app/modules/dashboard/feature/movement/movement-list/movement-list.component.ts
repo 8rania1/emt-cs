@@ -10,12 +10,10 @@ import { Movement } from 'src/app/common/emt-schema';
 export class MovementListComponent implements OnInit {
   movements: Movement[] = [];
 
-  constructor(private movementService: MovementService) {}
+  constructor(private movementService: MovementService) { }
   ngOnInit(): void {
     this.movementService.movements().subscribe({
-      next: (data: Page<Movement>) => {
-        this.movements = data.content;
-      },
+      next: (data: Movement[]) => this.movements = data
     });
   }
 }

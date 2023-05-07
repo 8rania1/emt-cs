@@ -7,9 +7,11 @@ import { NgModule } from '@angular/core';
 import { AvatarModule } from 'ngx-avatars';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import { BreadcrumbModule } from 'xng-breadcrumb';
+import { HomeComponent } from './feature/home/home/home.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
-  declarations: [DashboardComponent, HeaderComponent, SideNaveComponent],
-  imports: [DashboardRoutingModule, CommonModule, AvatarModule, NgbDropdownModule,BreadcrumbModule]
+  declarations: [DashboardComponent, HeaderComponent, SideNaveComponent,HomeComponent],
+  imports: [DashboardRoutingModule, CommonModule,SharedModule, AvatarModule, NgbDropdownModule,BreadcrumbModule]
 })
 export class DashboardModule { }

@@ -17,15 +17,19 @@ import { ToastService } from 'src/app/common/service/toastr.service';
   selector: 'app-equipement-details',
   templateUrl: './equipement-details.component.html',
 })
-export class EquipementDetailsComponent implements OnChanges {
+export class EquipementDetailsComponent implements OnChanges,OnInit {
   @Input()
   equipement: Equipment | undefined;
   movements: Movement[] = [];
   constructor(private movementService: MovementService) {}
 
-  ngOnChanges(changes: SimpleChanges): void {
-    this.movementService.movements().subscribe({
-      next: (data) => (this.movements = data.content),
+  ngOnInit(): void {
+    this.movementService.movements(this.equipement?.serialNumber).subscribe({
+      next: (data:Movement[]) => this.movements = data
     });
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+
   }
 }

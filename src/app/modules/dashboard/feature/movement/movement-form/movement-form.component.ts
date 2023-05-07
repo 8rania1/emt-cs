@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import {
   catchError,
   debounceTime,
@@ -19,20 +20,35 @@ import { ReasonService } from 'src/app/common/service/reason.service';
 import { ToastService } from 'src/app/common/service/toastr.service';
 
 @Component({
-  selector: 'app-form',
-  templateUrl: './form.component.html',
+  selector: 'app-movement-form',
+  templateUrl: './movement-form.component.html',
 })
-export class FormComponent implements OnInit {
+export class MovementFormComponent implements OnInit {
   searching = false;
   searchFailed = false;
   equipments: Equipment[] = [];
   reasons: Reason[] | undefined;
   directions: string[] = [];
 
-  constructor(private movementService: MovementService, private equipementService: EquipmentService,
-    private reasonService: ReasonService, private toastr: ToastService) { }
+  movement: FormGroup;
+
+
+  constructor(private builder: FormBuilder, private movementService: MovementService, private equipementService: EquipmentService,
+    private reasonService: ReasonService, private toastr: ToastService, private activatedRoute: ActivatedRoute) {
+    this.movement = this.builder.group({ equipment: null, direction: null, reason: [null, Validators.required], note: null });
+  }
 
   ngOnInit(): void {
+    const serialNumber: string | null = this.activatedRoute.snapshot.paramMap.get('serialNumber');
+    if (serialNumber) {
+      this.equipementService.equipment(serialNumber).subscribe({
+        next: (data: Equipment) => this.movement.controls['equipment'].setValue(data)
+      }
+      )
+
+    }
+
+
     this.equipementService.equipments().subscribe({
       next: (data) => (this.equipments = data.content),
     });
@@ -49,11 +65,10 @@ export class FormComponent implements OnInit {
       .subscribe({ next: (data) => (this.reasons = data) });
   }
 
-  submit(movement: NgForm) {
-    console.log(JSON.stringify(movement.value));
+  submit() {
     this.movementService
-      .save(movement.value)
-      .subscribe(() => this.toastr.show('success', 'equipment added'));
+      .save(this.movement.value)
+      .subscribe(() => { this.movement.reset(); this.toastr.show('success', 'equipment added') });
   }
 
   search: OperatorFunction<string, readonly Equipment[]> = (

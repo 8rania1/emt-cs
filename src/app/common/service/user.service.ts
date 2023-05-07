@@ -16,10 +16,9 @@ export class UserService {
     return this.httpClient.post<User>(this.resource, user);
   }
 
-  users(page: number = 0, size: number = 10, field: string = '', direction: string = 'asc'): Observable<User[]> {
-    const param = new HttpParams().set('page', page).set('size', size).
-      set('sort', `${field},${direction}`)
-    return this.httpClient.get<User[]>(this.resource);
+  users(count: boolean = false): Observable<User[]> {
+    const params = new HttpParams().set('count', count);
+    return this.httpClient.get<User[]>(this.resource, { params: params });
   }
 
 

@@ -11,6 +11,7 @@
   <table class="table table-striped">
     <thead>
       <tr>
+        <th scope="col"></th>
         <th scope="col">serialNumber</th>
         <th scope="col">version</th>
         <th scope="col">name</th>
@@ -22,6 +23,11 @@
     </thead>
     <tbody>
       <tr *ngFor="let equipment of equipments; index as i" (click)="more(equipment)">
+        <td>
+          <button type="button" class="btn btn-link" routerLink="/dashboard/movement/movement/{{equipment.serialNumber}}">
+            <i class="bi bi-arrow-left-right bi--xl"></i>
+          </button>
+        </td>
         <td>{{ equipment.serialNumber }}</td>
         <td>{{ equipment.version }}</td>
         <td>{{ equipment.name }}</td>
@@ -31,10 +37,8 @@
         <td>
           <span [outerHTML]="equipment.available | boolean"></span>
         </td>
+
       </tr>
     </tbody>
   </table>
-</div>
-<div *ngIf="equipment" class="flex-grow-1">
-  <app-equipement-details [equipement]="equipment"></app-equipement-details>
 </div>
