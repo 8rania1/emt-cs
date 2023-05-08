@@ -23,7 +23,15 @@ export class EquipmentListComponent implements OnInit {
   more(equipement: Equipment) {
     const modalRef = this.modalService.open(EquipementDetailsComponent);
     modalRef.componentInstance.equipement = equipement;
-
-
   }
+  delete(index: number, equipement: Equipment) {
+    this.equipmentService
+      .delete(equipement.id)
+      .subscribe({
+        next: () => this.equipments.splice(index, 1)
+      });
+  }
+
+
+
 }

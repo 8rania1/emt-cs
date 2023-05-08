@@ -10,6 +10,7 @@ export interface Category {
 }
 
 export interface Equipment {
+    id:number;
     serialNumber: string;
     creationDate: Date;
     version: string;

@@ -15,6 +15,9 @@ export class EquipmentService {
   save(equipment: Equipment): Observable<Equipment> {
     return this.httpClient.post<Equipment>(this.resource, equipment);
   }
+  edit(equipment: Equipment): Observable<Equipment> {
+    return this.httpClient.put<Equipment>(this.resource, equipment);
+  }
 
   equipments(page: number = 0, size: number = 10, field: string = '', direction: string = 'asc'): Observable<Page<Equipment>> {
     const param = new HttpParams().set('page', page).set('size', size).set('sort', `${field},${direction}`);
@@ -28,8 +31,12 @@ export class EquipmentService {
       .pipe(map((data: any) => data.content));
   }
 
-  equipment(serialNumber: string): Observable<Equipment> {
+  equipment(id: number): Observable<Equipment> {
+    return this.httpClient.get<Equipment>(`${this.resource}/${id}`);
+  }
+
+  delete(equipmentId: number): Observable<void> {
     return this.httpClient
-      .get<Equipment>(`${this.resource}/${serialNumber}`);
+      .delete<void>(`${this.resource}/${equipmentId}`);
   }
 }
