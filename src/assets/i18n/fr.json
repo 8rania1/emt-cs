@@ -1,6 +1,14 @@
 {
     "password": "Mot de passe",
     "category.threshold": "Seuil d'alerte",
-    "movement.IN":"Entrée en stock",
-    "movement.OUT":"Sortie de stock"
+    "movement.IN": "Entrée en stock",
+    "movement.OUT": "Sortie de stock",
+    "category.label": "Nom",
+    "category.description": "Description",
+    "serialNumber": "Numéro de série",
+    "version": "Version",
+    "name": "Nom",
+    "partNumber": "Numéro d'article",
+    "category": "Catégorie",
+    "supplier": "Fournisseur"
 }

@@ -39,9 +39,9 @@ export class MovementFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const serialNumber: string | null = this.activatedRoute.snapshot.paramMap.get('serialNumber');
-    if (serialNumber) {
-      this.equipementService.equipment(serialNumber).subscribe({
+    const equipmentId: string | null = this.activatedRoute.snapshot.paramMap.get('equipmentId');
+    if (equipmentId) {
+      this.equipementService.equipment(parseInt(equipmentId)).subscribe({
         next: (data: Equipment) => this.movement.controls['equipment'].setValue(data)
       }
       )

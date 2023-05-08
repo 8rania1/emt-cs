@@ -18,13 +18,15 @@
         <th scope="col">partNumber</th>
         <th scope="col">category</th>
         <th scope="col">supplier</th>
+        <th scope="col">actions</th>
         <th scope="col"></th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let equipment of equipments; index as i" (click)="more(equipment)">
+      <tr *ngFor="let equipment of equipments; index as i" >
         <td>
-          <button type="button" class="btn btn-link" routerLink="/dashboard/movement/movement/{{equipment.serialNumber}}">
+          <button type="button" class="btn btn-link"
+            routerLink="/dashboard/movement/movement/{{equipment.id}}">
             <i class="bi bi-arrow-left-right bi--xl"></i>
           </button>
         </td>
@@ -35,9 +37,19 @@
         <td>{{ equipment.category.name }}</td>
         <td>{{ equipment.supplier.name }}</td>
         <td>
+          <a class="text-primary m-1" (click)="delete(i,equipment)">
+            <i class="bi bi-trash bi--xl"></i>
+          </a>
+          <a class="text-primary m-1" routerLink="/dashboard/equipment/equipment/{{equipment.id}}">
+            <i class="bi bi-pencil bi--xl"></i>
+          </a>
+          <a class="text-primary m-1" (click)="more(equipment)">
+            <i class="bi bi-file-earmark-text bi--xl"></i>
+          </a>
+        </td>
+        <td>
           <span [outerHTML]="equipment.available | boolean"></span>
         </td>
-
       </tr>
     </tbody>
   </table>

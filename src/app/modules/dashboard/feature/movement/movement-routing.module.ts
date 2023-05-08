@@ -6,7 +6,7 @@ import { MovementFormComponent } from './movement-form/movement-form.component';
 const routes: Routes = [
   { path: '', component: MovementListComponent },
   { path: 'movement', component: MovementFormComponent, data: { breadcrumb: 'add movement' } },
-  { path: 'movement/:serialNumber', component: MovementFormComponent, data: { breadcrumb: 'add movement' } },
+  { path: 'movement/:equipmentId', component: MovementFormComponent, data: { breadcrumb: 'add movement' } },
 
 
 ];

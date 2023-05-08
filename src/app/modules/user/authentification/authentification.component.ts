@@ -5,6 +5,7 @@ import { UserSessionService } from 'src/app/common/service/user-session.service'
 @Component({
   selector: 'app-authentification',
   templateUrl: 'authentification.component.html',
+  styleUrls:['authentification.component.scss']
 })
 export class AuthentificationComponent {
 

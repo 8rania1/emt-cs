@@ -1,0 +1,49 @@
+<form [formGroup]="equipment" (ngSubmit)="submit()">
+  <div>
+    <div class="mb-1">
+      <label for="serialNumber">{{'serialNumber' | translate }}</label>
+      <input type="text" class="form-control" formControlName="serialNumber"  />
+    </div>
+    <div class="mb-1">
+      <label for="version">{{'version' | translate}}</label>
+      <input type="text" class="form-control" formControlName="version"  />
+    </div>
+    <div class="mb-1">
+      <label for="name">{{'name' | translate}}</label>
+      <input type="text" class="form-control" formControlName="name"  />
+    </div>
+    <div class="mb-1">
+      <label for="partNumber">{{'partNumber' | translate}}</label>
+      <input type="text" class="form-control" formControlName="partNumber"  />
+    </div>
+    <div class="mb-1">
+      <label>{{'category' | translate}}</label>
+      <div class="input-group">
+        <select class="form-select" formControlName="category" [compareWith]="compareFun">
+          <option *ngFor="let category of categories" [ngValue]="category">{{category.name}}</option>
+        </select>
+        <div class="input-group-text" id="basic-addon2">
+          <a (click)="category()">
+            <i class="bi bi-plus-circle bi--xl"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="mb-1">
+      <label>{{'supplier' | translate}}</label>
+      <div class="input-group mb-1">
+        <select class="form-select" formControlName="supplier" [compareWith]="compareFun">
+          <option *ngFor="let supplier of suppliers" [ngValue]="supplier">{{supplier.name}}</option>
+        </select>
+        <div class="input-group-text" id="basic-addon2">
+          <a (click)="supplier()">
+            <i class="bi bi-plus-circle bi--xl"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </div>
+</form>
