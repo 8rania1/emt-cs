@@ -1,13 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { FormsComponent } from './forms/forms.component';
-import { ToolsComponent } from './tools/tools.component';
-import { UserComponent } from './user/user.component';
+
+import { AuthentificationComponent } from './modules/user/authentification/authentification.component';
 
 const routes: Routes = [
-  {path:"forms",component:FormsComponent},
-  {path:"user",component:UserComponent},
-  {path:"tools",component:ToolsComponent}
+  { path: "", component: AuthentificationComponent },
+  { path: "dashboard", loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule) },
 ];
 
 @NgModule({

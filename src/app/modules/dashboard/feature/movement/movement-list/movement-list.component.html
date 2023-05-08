@@ -1,0 +1,26 @@
+
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">direction</th>
+        <th scope="col">date</th>
+        <th scope="col">equipment</th>
+        <th scope="col">reason</th>
+        <th scope="col">note</th>
+        <th scope="col">user</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let movement of movements; index as i">
+        <td><span [innerHTML]="movement.direction | direction"></span></td>
+        <td>{{ movement.date | date:'dd.MM.yyyy HH:mm' }}</td>
+        <td>{{ movement.equipment.serialNumber }}</td>
+        <td>{{ movement.reason.title }}</td>
+        <td>{{ movement.note }}</td>
+        <td>{{movement.user.firstName}} {{movement.user.lastName}}</td>
+      </tr>
+    </tbody>
+  </table>
+  
+</div>

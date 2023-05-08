@@ -1,0 +1,42 @@
+<main class="d-flex w-100">
+  <div class="container d-flex flex-column">
+    <div class="row vh-100">
+      <div class="col-sm-10 col-md-8 col-lg-6 mx-auto d-table h-100">
+        <div class="d-table-cell align-middle">
+          <div class="text-center mt-4">
+            <p class="lead">
+              Sign in to your account to continue
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <div class="m-sm-4">
+                <form #credential="ngForm" (submit)="submit(credential)">
+                  <div class="mb-3">
+                    <label class="form-label">{{'email' | translate}}</label>
+                    <input class="form-control form-control-lg" type="email" name="email" ngModel
+                      placeholder="{{'email.input.placeholder' | translate}}" />
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">{{'password' | translate}}</label>
+                    <input class="form-control form-control-lg" type="password" name="password" ngModel
+                      placeholder="{{'password.input.placeholder' | translate}}" />
+                  </div>
+                  <div>
+                  </div>
+                  <div class="text-center mt-3">
+                    <button type="submit" [disabled]="!credential.valid"
+                      class="btn btn-primary rounded-pill">{{'submit' | translate}}</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+</main>

@@ -1,0 +1,6 @@
+{
+    "password": "Mot de passe",
+    "category.threshold": "Seuil d'alerte",
+    "movement.IN":"Entrée en stock",
+    "movement.OUT":"Sortie de stock"
+}
