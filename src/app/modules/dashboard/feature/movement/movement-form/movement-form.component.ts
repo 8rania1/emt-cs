@@ -13,11 +13,16 @@ import {
   switchMap,
   tap,
 } from 'rxjs';
-import { Category, Equipment, Reason } from 'src/app/common/emt-schema';
+import {
+  Category,
+  Equipment,
+  Movement,
+  Status,
+} from 'src/app/common/emt-schema';
 import { EquipmentService } from 'src/app/common/service/equipment.service';
 import { MovementService } from 'src/app/common/service/movement.service';
-import { ReasonService } from 'src/app/common/service/reason.service';
-import { ToastService } from 'src/app/common/service/toastr.service';
+import { StatusService } from 'src/app/common/service/status.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-movement-form',
@@ -27,48 +32,61 @@ export class MovementFormComponent implements OnInit {
   searching = false;
   searchFailed = false;
   equipments: Equipment[] = [];
-  reasons: Reason[] | undefined;
+  statuses: Status[] | undefined;
   directions: string[] = [];
 
   movement: FormGroup;
 
-
-  constructor(private builder: FormBuilder, private movementService: MovementService, private equipementService: EquipmentService,
-    private reasonService: ReasonService, private toastr: ToastService, private activatedRoute: ActivatedRoute) {
-    this.movement = this.builder.group({ equipment: null, direction: null, reason: [null, Validators.required], note: null });
+  constructor(
+    private builder: FormBuilder,
+    private movementService: MovementService,
+    private equipementService: EquipmentService,
+    private statusService: StatusService,
+    private activatedRoute: ActivatedRoute
+  ) {
+    this.movement = this.builder.group({
+      equipment: null,
+      direction: null,
+      status: [null, Validators.required],
+      note: null,
+    });
   }
 
   ngOnInit(): void {
-    const equipmentId: string | null = this.activatedRoute.snapshot.paramMap.get('equipmentId');
+    const equipmentId: string | null =
+      this.activatedRoute.snapshot.paramMap.get('equipmentId');
     if (equipmentId) {
       this.equipementService.equipment(parseInt(equipmentId)).subscribe({
-        next: (data: Equipment) => this.movement.controls['equipment'].setValue(data)
-      }
-      )
-
+        next: (data: Equipment) =>
+          this.movement.controls['equipment'].setValue(data),
+      });
     }
-
 
     this.equipementService.equipments().subscribe({
       next: (data) => (this.equipments = data.content),
     });
     this.movementService.directions().subscribe({
-      next: (data: string[]) => this.directions = data,
+      next: (data: string[]) => (this.directions = data),
     });
-
-
   }
 
   directionChange(direction: string) {
-    this.reasonService
-      .reasons(direction)
-      .subscribe({ next: (data) => (this.reasons = data) });
+    this.statusService
+      .collection(direction)
+      .subscribe({ next: (data) => (this.statuses = data) });
   }
 
   submit() {
     this.movementService
       .save(this.movement.value)
-      .subscribe(() => { this.movement.reset(); this.toastr.show('success', 'equipment added') });
+      .subscribe((data: Movement) => {
+        this.movement.reset();
+        Swal.fire(
+          'moved !',
+          `equipment ${data.equipment.name} has been moved`,
+          'success'
+        );
+      });
   }
 
   search: OperatorFunction<string, readonly Equipment[]> = (
