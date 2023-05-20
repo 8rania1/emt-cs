@@ -4,15 +4,14 @@ import { NgForm } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Supplier } from 'src/app/common/emt-schema';
 import { SupplierService } from 'src/app/common/service/supplier.service';
-import { ToastService } from 'src/app/common/service/toastr.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-supplier-form',
   templateUrl: './supplier-form.component.html',
 })
 export class SupplierFormComponent {
-  constructor(private supplierService: SupplierService,
-    private toastr: ToastService, private activeModal: NgbActiveModal) { }
+  constructor(private supplierService: SupplierService, private activeModal: NgbActiveModal) { }
 
   submit(supplier: NgForm) {
     this.supplierService
@@ -20,7 +19,7 @@ export class SupplierFormComponent {
       .subscribe({
         next: (data: Supplier) => {
           supplier.reset();
-          this.toastr.show('success', `supplier ${data.name} added successfuly`);
+          Swal.fire('Created !', `supplier ${data.name} has been created`, 'success');
           this.activeModal.close(data);
         }
       });

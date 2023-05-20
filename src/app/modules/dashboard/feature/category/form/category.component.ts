@@ -11,12 +11,13 @@ import { CategoryService } from 'src/app/common/service/category.service';
 export class CategoryComponent {
   @Output()
   create: EventEmitter<Category> = new EventEmitter<Category>();
-  constructor(private categoryService: CategoryService,private avtiveModal:NgbActiveModal) {}
+  constructor(private categoryService: CategoryService) {}
 
   submit(form: NgForm) {
     this.categoryService.save(form.value).subscribe({
       next: (category: Category) => {
-        this.create.emit(category); form.reset(); this.avtiveModal.close(category);
+        this.create.emit(category);
+        form.reset();
       },
     });
   }

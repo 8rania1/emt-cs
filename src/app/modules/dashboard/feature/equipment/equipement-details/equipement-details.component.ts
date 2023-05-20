@@ -11,7 +11,6 @@ import { Category, Equipment, Movement } from 'src/app/common/emt-schema';
 import { CategoryService } from 'src/app/common/service/category.service';
 import { EquipmentService } from 'src/app/common/service/equipment.service';
 import { MovementService } from 'src/app/common/service/movement.service';
-import { ToastService } from 'src/app/common/service/toastr.service';
 
 @Component({
   selector: 'app-equipement-details',

@@ -11,7 +11,8 @@ const routes: Routes = [
       { path: "movement", loadChildren: () => import('./feature/movement/movement.module').then(m => m.MovementModule) },
       { path: "user", loadChildren: () => import('./feature/user/user.module').then(m => m.UserModule) },
       { path: "supplier", loadChildren: () => import('./feature/supplier/supplier.module').then(m => m.SupplierModule) },
-      { path: "settings", loadChildren: () => import('./feature/settings/settings.module').then(m => m.SettingsModule) },
+      { path: "status", loadChildren: () => import('./feature/status/status.module').then(m => m.StatusModule) },
+      { path: "category", loadChildren: () => import('./feature/category/category.module').then(m => m.CategoryModule) },
     ]
   },
 ];

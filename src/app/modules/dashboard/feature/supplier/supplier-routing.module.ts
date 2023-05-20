@@ -5,7 +5,6 @@ import { SupplierFormComponent } from './supplier-form/supplier-form.component';
 
 const routes: Routes = [
   { path: "", component: SupplierListComponent },
-  { path: "create", component: SupplierFormComponent }
 ];
 
 @NgModule({

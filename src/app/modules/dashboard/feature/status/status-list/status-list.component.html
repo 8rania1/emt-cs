@@ -1,7 +1,7 @@
 <div class="d-flex flex-row gap-2">
   <div class="flex-fill">
     <div class="d-grid gap-2 d-flex justify-content-end">
-      <button class="btn btn-link" (click)="reason()">
+      <button class="btn btn-link" (click)="status()">
         <i class="bi bi-plus-circle bi--xl"></i>
       </button>
     </div>
@@ -11,16 +11,16 @@
   <table class="table table-striped">
     <thead>
       <tr>
-        <th scope="col">Reason</th>
+        <th scope="col">Status</th>
         <th scope="col">Direction</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let reason of reasons; index as i">
+      <tr *ngFor="let status of statuses; index as i">
         <td>
-          {{ reason.title }}
+          {{ status.title }}
         </td>
-        <td>{{ 'movement.'+reason.direction | translate }}</td>
+        <td>{{ "movement." + status.direction | translate }}</td>
       </tr>
     </tbody>
   </table>

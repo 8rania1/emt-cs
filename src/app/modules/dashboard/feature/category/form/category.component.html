@@ -1,19 +1,32 @@
 <form #category="ngForm" (ngSubmit)="submit(category)">
-  <div class="modal-body">
-    <div class="mb-1">
-      <label for="name">{{'category.label' | translate}}</label>
-      <input type="text" name="name" class="form-control" required="true" ngModel />
-    </div>
-    <div class="mb-1">
-      <label for="description">{{'category.description' | translate}}</label>
-      <textarea type="text" name="description" class="form-control" ngModel></textarea>
-    </div>
-    <div class="mb-1">
-      <label for="threshold">{{'category.threshold' | translate}}</label>
-      <input type="number" name="threshold" class="form-control" required="true" ngModel />
-    </div>
+  <div class="mb-1">
+    <label for="name">{{ "category.label" | translate }}</label>
+    <input
+      type="text"
+      name="name"
+      class="form-control"
+      required="true"
+      ngModel
+    />
   </div>
-  <div class="modal-footer">
-    <button type="submit" class="btn btn-primary">Submit</button>
+  <div class="mb-1">
+    <label for="description">{{ "category.description" | translate }}</label>
+    <textarea
+      type="text"
+      name="description"
+      class="form-control"
+      ngModel
+    ></textarea>
   </div>
+  <div class="mb-1">
+    <label for="threshold">{{ "category.threshold" | translate }}</label>
+    <input
+      type="number"
+      name="threshold"
+      class="form-control"
+      required="true"
+      ngModel
+    />
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
 </form>

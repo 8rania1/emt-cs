@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { rxStompServiceFactory } from './common/stomp/rx-stomp-service-factory';
 import { RxStompService } from './common/stomp/rx-stomp.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ToastComponent } from './shared/component/toast/toast.component';
 import { AuthentificationComponent } from './modules/user/authentification/authentification.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { ToastrModule } from 'ngx-toastr';
@@ -23,7 +22,7 @@ export function createTranslateLoader(http: HttpClient) {
 }
 
 @NgModule({
-  declarations: [AppComponent, ToastComponent, AuthentificationComponent],
+  declarations: [AppComponent, AuthentificationComponent],
   imports: [AppRoutingModule, BrowserModule, BrowserAnimationsModule, FormsModule, HttpClientModule,
     NgxSpinnerModule, ToastrModule.forRoot(),
     TranslateModule.forRoot({ defaultLanguage: 'fr', loader: { provide: TranslateLoader, useFactory: (createTranslateLoader), deps: [HttpClient] } }),
