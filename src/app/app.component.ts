@@ -7,6 +7,7 @@ import { Notification } from './common/emt-schema';
   selector: 'app-root',
   templateUrl: './app.component.html',
 })
+
 export class AppComponent  {
   constructor() {}
 }
