@@ -1,11 +1,43 @@
-<div class="d-flex">
+<div class="alert" >
+  <h2 style="color: white; ">
+    Info
+  </h2>
+  This is an alert box.  This is an alert box.  This is an alert box.
+  This is an alert box.  This is an alert box.  This is an alert box.  This is an alert box.
+  This is an alert box.  This is an alert box.  This is an alert box.  This is an alert box.
+</div>
+<style>
+  .alert {
+  padding: 20px;
+  background-color: #2196F3;
+  color: white;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+</style>
+
+
+<div class="d-flex mt-5">
   <div class="flex-grow-1 me-2">
     <app-category (create)="category($event)"></app-category>
   </div>
 
   <div class="table-responsive table-striped flex-fill">
     <table class="table table-striped">
-      <thead>
+      <thead style="background-color: #222E3C; color: white;">
         <tr>
           <th scope="col">{{ "category.label" | translate }}</th>
           <th scope="col">{{ "category.threshold" | translate }}</th>

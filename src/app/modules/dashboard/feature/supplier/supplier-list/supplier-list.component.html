@@ -1,4 +1,35 @@
-<div class="d-flex flex-row gap-2">
+<div class="alert" >
+  <h2 style="color: white; ">
+    Info
+  </h2>
+  This is an alert box.  This is an alert box.  This is an alert box.
+  This is an alert box.  This is an alert box.  This is an alert box.  This is an alert box.
+  This is an alert box.  This is an alert box.  This is an alert box.  This is an alert box.
+</div>
+<style>
+  .alert {
+  padding: 20px;
+  background-color: #2196F3;
+  color: white;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+</style>
+
+<div class="d-flex flex-row gap-2 ">
   <div class="flex-fill">
     <div class="d-grid gap-2 d-flex justify-content-end">
       <button class="btn btn-link" (click)="supplier()">
@@ -9,8 +40,8 @@
 </div>
 
 <div class="table-responsive">
-  <table class="table table-striped">
-    <thead>
+  <table class="table table-striped ">
+    <thead style="background-color: #222E3C; color: white;">
       <tr>
         <th scope="col">name</th>
         <th scope="col">email</th>
