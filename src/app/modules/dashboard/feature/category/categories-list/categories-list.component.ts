@@ -11,6 +11,7 @@ import Swal from 'sweetalert2';
 export class CategoriesListComponent implements OnInit {
   @Input()
   categories: Category[] = [];
+  category!: Category;
   constructor(
     private categoryService: CategoryService,
     private modalService: NgbModal
@@ -22,8 +23,23 @@ export class CategoriesListComponent implements OnInit {
     });
   }
 
-  category(category: Category) {
-    this.categories.push(category);
+  select(category: Category) {
+    this.category = category;
+  }
+
+  addToList(category: Category) {
+    const filter: Category[] = this.categories.filter(
+      (item) => item.id === category.id
+    );
+    if (filter.length > 0) {
+      filter.forEach((item) => {
+        item.name = category.name;
+        item.description = category.description;
+        item.threshold = category.threshold;
+      });
+    } else {
+      this.categories.push(category);
+    }
   }
 
   delete(index: number, category: Category) {
@@ -45,7 +61,5 @@ export class CategoriesListComponent implements OnInit {
         });
       }
     });
-
-
   }
 }

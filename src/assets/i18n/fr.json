@@ -10,5 +10,7 @@
     "name": "Nom",
     "partNumber": "Numéro d'article",
     "category": "Catégorie",
-    "supplier": "Fournisseur"
+    "supplier": "Fournisseur",
+    "category.save":"Sauvgarder Categorie",
+    "receive.mail.notification":"Recevoir notification mail"
 }

@@ -10,6 +10,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class SupplierListComponent implements OnInit {
   suppliers: Supplier[] = [];
+  supplier!: Supplier;
   constructor(
     private supplierService: SupplierService,
     private modalService: NgbModal
@@ -20,9 +21,28 @@ export class SupplierListComponent implements OnInit {
       .subscribe((data: Supplier[]) => (this.suppliers = data));
   }
 
-  supplier() {
-    this.modalService
-      .open(SupplierFormComponent)
-      .result.then((supplier: Supplier) => this.suppliers.push(supplier));
+  select(supplier: Supplier){
+    this.supplier = supplier;
   }
+
+  addToList(supplier: Supplier) {
+    console.log(JSON.stringify(supplier));
+    const filter: Supplier[] = this.suppliers.filter(
+      (item) => item.id === supplier.id
+    );
+    if (filter.length > 0) {
+      filter.forEach((item) => {
+        item.name = supplier.name;
+        item.email = supplier.email;
+        item.address = supplier.address;
+        item.mobile = supplier.mobile;
+
+        
+      });
+    } else {
+      this.suppliers.push(supplier);
+    }
+  }
+
+
 }

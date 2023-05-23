@@ -22,7 +22,7 @@
       <div class="form-check" *ngFor="let permission of permissions">
         <input class="form-check-input" (change)="onChange(permission.name)" type="checkbox" [value]="permission" name="category">
         <label class="form-check-label">
-          {{ permission.name }}
+          {{ permission.name | translate}}
         </label>
       </div>
     </div>

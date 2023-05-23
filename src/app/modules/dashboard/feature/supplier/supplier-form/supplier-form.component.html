@@ -1,20 +1,20 @@
-<form #supplier="ngForm" (ngSubmit)="submit(supplier)">
+<form [formGroup]="form" (ngSubmit)="submit()">
   <div class="modal-body">
     <div class="mb-1">
       <label for="firstName">name</label>
-      <input type="text" class="form-control" name="name" ngModel />
+      <input type="text" class="form-control"  formControlName="name" />
     </div>
     <div class="mb-1">
       <label for="lastName">email</label>
-      <input type="text" class="form-control" name="email" ngModel />
+      <input type="text" class="form-control" formControlName="email" />
     </div>
     <div class="mb-1">
       <label for="mail">address</label>
-      <input type="text" class="form-control" name="address" ngModel />
+      <input type="text" class="form-control" formControlName="address"  />
     </div>
     <div class="mb-1">
       <label for="mobile">Mobile</label>
-      <input type="text" class="form-control" name="mobile" ngModel />
+      <input type="text" class="form-control" formControlName="mobile" />
     </div>
   </div>
   <div class="modal-footer">
