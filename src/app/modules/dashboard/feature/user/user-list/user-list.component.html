@@ -1,11 +1,4 @@
-<div class="alert" >
-  <h2 style="color: white; ">
-    Info
-  </h2>
-  This is an alert box.  This is an alert box.  This is an alert box.
-  This is an alert box.  This is an alert box.  This is an alert box.  This is an alert box.
-  This is an alert box.  This is an alert box.  This is an alert box.  This is an alert box.
-</div>
+<app-hint [content]="'user.hint.content' | translate"></app-hint>
 <div class="d-flex flex-row gap-2">
   <div class="flex-fill">
     <div class="d-grid gap-2 d-flex justify-content-end">
@@ -15,27 +8,40 @@
     </div>
   </div>
 </div>
-<div class="table-responsive">
-  <table class="table table-striped">
-    <thead style="background-color: #222E3C; color: white;">
-      <tr>
-        <th scope="col">firstName</th>
-        <th scope="col">lastName</th>
-        <th scope="col">mail</th>
-        <th scope="col">mobile</th>
-        <th scope="col">permissions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let user of users; index as i">
-        <td>{{ user.firstName }}</td>
-        <td>{{ user.lastName }}</td>
-        <td>{{ user.email }}</td>
-        <td>{{ user.mobile }}</td>
-        <td>
-          <span *ngFor="let permission of user.permissions" class="badge rounded-pill text-reset border p-2 me-1">{{ permission }}</span>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+<div class="d-flex">
+  <div class="flex-grow-1 me-2">
+    <app-user-form [user]="user" (processed)="edit($event)"></app-user-form>
+  </div>
+  <div class="table-responsive flex-grow-1">
+    <table class="table table-striped">
+      <thead class="bg-dark text-light">
+        <tr>
+          <th scope="col">firstName</th>
+          <th scope="col">lastName</th>
+          <th scope="col">mail</th>
+          <th scope="col">mobile</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users; index as i">
+          <td>{{ user.firstName }}</td>
+          <td>{{ user.lastName }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.mobile }}</td>
+          <td>
+            <a class="text-reset" (click)="select(user)">
+              <svg-icon src="/assets/icons/edit.svg" svgClass="icon-small"></svg-icon>
+            </a>
+            <a class="text-reset" [ngbPopover]="popContent">
+              <svg-icon src="/assets/icons/security.svg" svgClass="icon-small"></svg-icon>
+            </a>
+            <ng-template #popContent>
+              <span *ngFor="let permission of user.permissions" class="badge rounded-pill text-reset border p-2 me-1">{{ permission }}</span>
+            </ng-template>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

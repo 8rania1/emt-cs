@@ -1,0 +1,48 @@
+<li class="nav-item">
+  <a class="nav-link" (click)="chatbox()">
+    <svg-icon src="/assets/icons/chat-bubbles.svg" svgClass="icon-small"></svg-icon>
+  </a>
+</li>
+
+<div class="popup-box chat-popup" [ngClass]="active ? 'popup-box-on' : 'popup-box-off'" id="qnimate">
+  <div class="d-flex">
+    <div class="list-group list-group-flush p-2">
+      <div *ngFor="let user of users" class="list-group-item bg-transparent d-flex justify-content-between align-items-center mb-1" (click)="select(user)">
+        <i class="bi bi-bell me-1"></i>
+        <div class="flex-fill text-truncate">
+          <span class="d-block">{{ user.firstName }} {{ user.lastName }}</span>
+          <small class="text-muted small mt-1">{{ user.email }}</small>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="popup-head">
+        <div class="popup-head-left pull-left">
+          {{ recipient?.firstName }} {{ recipient?.firstName }}
+        </div>
+      </div>
+      <div class="popup-messages bg-dark">
+        <div class="direct-chat-messages">
+          <div class="direct-chat-msg doted-border" *ngFor="let chat of chats">
+            <div class="direct-chat-info clearfix">
+              <span class="direct-chat-name pull-left">{{ chat.user.firstName }} {{ chat.user.lastName }}</span>
+            </div>
+            <svg-icon src="/assets/icons/user.svg" svgClass="direct-chat-img"></svg-icon>
+            <div class="direct-chat-text">{{ chat.message }}</div>
+            <div class="direct-chat-info clearfix">
+              <span class="direct-chat-timestamp pull-right">{{ chat.date | date : 'h:mm a' }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mt-1">
+        <textarea class="form-control" placeholder="Type a message..." [(ngModel)]="message"></textarea>
+        <div class="d-flex justify-content-end">
+          <a class="text-muted" (click)="send()" *ngIf="recipient">
+            <svg-icon src="/assets/icons/send.svg" svgClass="icon-small"></svg-icon>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

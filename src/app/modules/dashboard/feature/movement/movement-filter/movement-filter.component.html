@@ -1,0 +1,34 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <div>
+    <div class="mb-1">
+      <label for="equipment">equipment</label>
+      <select class="form-select" aria-label="Default select example" formControlName="equipment">
+        <option *ngFor="let equipment of equipments" [ngValue]="equipment">{{ equipment.name }}</option>
+      </select>
+    </div>
+    <div class="mb-1 d-flex">
+      <div>
+        <label>{{ 'start.date' | translate }}</label>
+        <div class="input-group">
+          <input class="form-control" formControlName="startDate" ngbDatepicker #sd="ngbDatepicker" />
+          <a (click)="sd.toggle()">
+            <svg-icon src="/assets/icons/date-round.svg" svgClass="icon-small"></svg-icon>
+          </a>
+        </div>
+      </div>
+      <div>
+        <label>{{ 'end.date' | translate }}</label>
+        <div class="input-group">
+          <input class="form-control" formControlName="endDate" ngbDatepicker #ed="ngbDatepicker" />
+          <a (click)="ed.toggle()">
+            <svg-icon src="/assets/icons/date-round.svg" svgClass="icon-small"></svg-icon>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex justify-content-end">
+      <button type="submit" class="btn btn-dark me-2">Filter</button>
+      <button type="button" class="btn btn-dark" (click)="reset()">Clear</button>
+    </div>
+  </div>
+</form>

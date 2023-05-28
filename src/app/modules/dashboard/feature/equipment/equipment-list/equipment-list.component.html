@@ -1,18 +1,10 @@
-<div class="alert" >
-  <h2 style="color: white; ">
-    Info
-  </h2>
-  This is an alert box.  This is an alert box.  This is an alert box.
-  This is an alert box.  This is an alert box.  This is an alert box.  This is an alert box.
-  This is an alert box.  This is an alert box.  This is an alert box.  This is an alert box.
-</div>
-
+<app-hint [content]="'equipment.hint.content' | translate"></app-hint>
 <div class="d-flex flex-row gap-2">
 
   <div class="flex-fill">
     <div class="d-grid gap-2 d-flex justify-content-end">
       <button class="btn btn-link" routerLink="/dashboard/equipment/equipment">
-        <i class="bi bi-plus-circle bi--xl"></i>
+        <svg-icon src="/assets/icons/add.svg" svgClass="icon-small"></svg-icon>
       </button>
     </div>
   </div>
@@ -36,8 +28,8 @@
       <tr *ngFor="let equipment of equipments; index as i" >
         <td>
           <button type="button" class="btn btn-link"
-            routerLink="/dashboard/movement/movement/{{equipment.id}}">
-            <i class="bi bi-arrow-left-right bi--xl"></i>
+            routerLink="/dashboard/equipment/movement/{{equipment.id}}">
+            <svg-icon src="/assets/icons/move-arrows.svg" svgClass="icon-small"></svg-icon>
           </button>
         </td>
         <td>{{ equipment.serialNumber }}</td>
@@ -48,13 +40,13 @@
         <td>{{ equipment.supplier.name }}</td>
         <td>
           <a class="text-primary m-1" (click)="delete(i,equipment)">
-            <i class="bi bi-trash bi--xl"></i>
+            <svg-icon src="/assets/icons/remove.svg" svgClass="icon-small"></svg-icon>
           </a>
           <a class="text-primary m-1" routerLink="/dashboard/equipment/equipment/{{equipment.id}}">
-            <i class="bi bi-pencil bi--xl"></i>
+            <svg-icon src="/assets/icons/edit.svg" svgClass="icon-small"></svg-icon>
           </a>
           <a class="text-primary m-1" (click)="more(equipment)">
-            <i class="bi bi-file-earmark-text bi--xl"></i>
+            <svg-icon src="/assets/icons/document.svg" svgClass="icon-small"></svg-icon>
           </a>
         </td>
         <td>

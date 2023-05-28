@@ -4,46 +4,16 @@
   </a>
   <div class="navbar-collapse collapse">
     <ul class="navbar-nav navbar-align">
-      <li ngbDropdown class="nav-item dropdown">
-        <a ngbDropdownToggle class="nav-icon dropdown-toggle" id="alertsDropdown" data-bs-toggle="dropdown">
-          <div class="position-relative">
-            <i class="align-middle bi bi-bell"></i>
-            <span class="indicator bg-danger">{{ count }}</span>
-          </div>
-        </a>
-        <div ngbDropdownMenu class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0"
-          aria-labelledby="alertsDropdown">
-          <div class="dropdown-menu-header">
-            {{ count }} New Notifications
-          </div>
-          <div class="list-group">
-            <a *ngFor="let notification of notifications" href="#" class="list-group-item">
-              <div class="row g-0 align-items-center">
-                <div class="col-2">
-                  <i class="text-danger bi bi-bell-fill"></i>
-                </div>
-                <div class="col-10">
-                  <div class="text-dark"> {{ notification.title }}</div>
-                  <div class="text-muted small mt-1"> {{ notification.message }}</div>
-                  <div class="text-muted small mt-1">{{ notification.time }}</div>
-                </div>
-              </div>
-            </a>
-          </div>
-          <div class="dropdown-menu-footer">
-            <a href="#" class="text-muted">Show all notifications</a>
-          </div>
-        </div>
-      </li>
+      <app-notifications></app-notifications>
+      <app-alerts></app-alerts>
+      <app-chat-box></app-chat-box>
       <li ngbDropdown class="nav-item dropdown">
         <a ngbDropdownToggle class="nav-link" data-bs-toggle="dropdown">
-
-          <img src="/assets/img/avatars/avatar.png" class="avatar img-fluid rounded me-1" alt="Charles Hall" /> <span
-            class="text-dark">{{user?.firstName}} {{user?.lastName}}</span>
+          <svg-icon src="/assets/icons/user.svg" svgClass="icon-small"></svg-icon>
+          <span class="text-dark">{{ user?.firstName }} {{ user?.lastName }}</span>
         </a>
         <div ngbDropdownMenu class="dropdown-menu dropdown-menu-end">
-          <a class="dropdown-item" href="pages-profile.html"><i class="align-middle me-1" data-feather="user"></i>
-            Profile</a>
+          <a class="dropdown-item" href="pages-profile.html"><i class="align-middle me-1" data-feather="user"></i> Profile</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" (click)="logout()">Log out</a>
         </div>

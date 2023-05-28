@@ -22,9 +22,9 @@
         <select class="form-select" formControlName="category" [compareWith]="compareFun">
           <option *ngFor="let category of categories" [ngValue]="category">{{category.name}}</option>
         </select>
-        <div class="input-group-text" id="basic-addon2">
+        <div>
           <a (click)="category()">
-            <i class="bi bi-plus-circle bi--xl"></i>
+            <svg-icon src="/assets/icons/add.svg" svgClass="icon-small"></svg-icon>
           </a>
         </div>
       </div>
@@ -35,9 +35,9 @@
         <select class="form-select" formControlName="supplier" [compareWith]="compareFun">
           <option *ngFor="let supplier of suppliers" [ngValue]="supplier">{{supplier.name}}</option>
         </select>
-        <div class="input-group-text" id="basic-addon2">
+        <div>
           <a (click)="supplier()">
-            <i class="bi bi-plus-circle bi--xl"></i>
+            <svg-icon src="/assets/icons/add.svg" svgClass="icon-small"></svg-icon>
           </a>
         </div>
       </div>

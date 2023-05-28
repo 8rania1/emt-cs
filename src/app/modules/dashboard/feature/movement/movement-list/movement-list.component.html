@@ -1,55 +1,33 @@
-<div class="alert" >
-  <h2 style="color: white; ">
-    Info
-  </h2>
-  This is an alert box.  This is an alert box.  This is an alert box.
-  This is an alert box.  This is an alert box.  This is an alert box.  This is an alert box.
-  This is an alert box.  This is an alert box.  This is an alert box.  This is an alert box.
-</div>
-<style>
-  .alert {
-  padding: 20px;
-  background-color: #2196F3;
-  color: white;
-}
-
-.closebtn {
-  margin-left: 15px;
-  color: white;
-  font-weight: bold;
-  float: right;
-  font-size: 22px;
-  line-height: 20px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.closebtn:hover {
-  color: black;
-}
-</style>
-<div class="table-responsive mt-5">
-  <table class="table table-striped text-light" style="background-color: #222E3C;" >
-    <thead>
-      <tr>
-        <th scope="col">direction</th>
-        <th scope="col">date</th>
-        <th scope="col">equipment</th>
-        <th scope="col">reason</th>
-        <th scope="col">note</th>
-        <th scope="col">user</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let movement of movements; index as i">
-        <td><span [innerHTML]="movement.direction | direction"></span></td>
-        <td>{{ movement.date | date:'dd.MM.yyyy HH:mm' }}</td>
-        <td>{{ movement.equipment.serialNumber }}</td>
-        <td>{{ movement.status.title }}</td>
-        <td>{{ movement.note }}</td>
-        <td>{{movement.user.firstName}} {{movement.user.lastName}}</td>
-      </tr>
-    </tbody>
-  </table>
-  
+<app-hint [content]="'movement.hint.content' | translate"></app-hint>
+<div class="d-flex mt-3">
+  <div class="flex-grow-1 border-end me-2 pe-2">
+    <app-movement-filter (filter)="search($event)" (clear)="clear()"></app-movement-filter>
+  </div>
+  <div class="flex-grow-1 table-responsive">
+    <button class="btn btn-dark me-2 mb-2" (click)="downloadFile()" [disabled]="!filter">Download</button>
+    <table class="table table-striped">
+      <thead class="bg-dark text-light">
+        <tr>
+          <th scope="col"></th>
+          <th scope="col">date</th>
+          <th scope="col">equipment</th>
+          <th scope="col">reason</th>
+          <th scope="col">note</th>
+          <th scope="col">user</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let movement of movements; index as i">
+          <td>
+            <svg-icon [src]="'/assets/icons/arrow-' + (movement.direction === 'IN' ? 'right' : 'left') + '.svg'" svgClass="icon-small"></svg-icon>
+          </td>
+          <td>{{ movement.date | date : 'dd.MM.yyyy HH:mm' }}</td>
+          <td>{{ movement.equipment.serialNumber }}</td>
+          <td>{{ movement.status.title }}</td>
+          <td>{{ movement.note }}</td>
+          <td>{{ movement.user.firstName }} {{ movement.user.lastName }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
